@@ -22,3 +22,5 @@ logs/
 *.db
 *.trace.db
 *.lock.db
+
+.docs/phase

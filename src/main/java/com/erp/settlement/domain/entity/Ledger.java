@@ -91,4 +91,5 @@ public class Ledger extends BaseEntity {
 
     public String getReferenceType() { return referenceType; }
     public Long getReferenceId() { return referenceId; }
+    public String getDescription() { return description; }
 }

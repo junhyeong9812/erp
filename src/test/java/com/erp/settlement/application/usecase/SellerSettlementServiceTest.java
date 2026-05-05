@@ -40,8 +40,7 @@ class SellerSettlementServiceTest {
                 Ledger.sales(1L, Money.of(100_000), "", 1L),
                 Ledger.sales(2L, Money.of(50_000), "", 1L),
                 Ledger.refund(3L, Money.of(20_000), "", 1L),
-                // FEE 전표는 adjustment 로 시뮬레이션 (debit 에 수수료)
-                feeLedger(4L, Money.of(5_000), 1L)));
+                Ledger.fee(4L, Money.of(5_000), "fee", 1L)));
 
         Long id = service.calculate(1L, 1L);
 
@@ -68,11 +67,4 @@ class SellerSettlementServiceTest {
         verify(repo).save(s);
     }
 
-    /** FEE 타입 Ledger 헬퍼 — reflection 대신 adjustment 로 debit 만 채움 */
-    private Ledger feeLedger(Long ref, Money amount, Long periodId) {
-        // 실제 프로덕션에선 Ledger.fee(...) 팩토리 추가를 권장.
-        // 여기서는 adjustment(debit only) 로 FEE 집계 분기 테스트 대체 불가하므로
-        // 해당 분기는 통합 테스트(또는 실제 FEE 팩토리 추가) 로 검증한다.
-        return Ledger.adjustment(ref, "FEE", amount, Money.ZERO, "fee", periodId);
-    }
 }

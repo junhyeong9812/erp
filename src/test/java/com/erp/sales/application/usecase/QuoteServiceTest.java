@@ -6,7 +6,6 @@ import com.erp.sales.application.dto.command.CreateQuoteCommand;
 import com.erp.sales.application.port.outbound.QuoteRepository;
 import com.erp.sales.domain.entity.Quote;
 import com.erp.sales.domain.event.QuoteExpiredEvent;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -31,13 +30,10 @@ class QuoteServiceTest {
     @Mock EventBus eventBus;
     @InjectMocks QuoteService service;
 
-    @BeforeEach
-    void stubSave() {
-        when(quoteRepository.save(any(Quote.class))).thenAnswer(inv -> inv.getArgument(0));
-    }
-
     @Test
     void createQuote_는_총액을_unitPrice_곱_quantity_합산하여_저장() {
+        when(quoteRepository.save(any(Quote.class))).thenAnswer(inv -> inv.getArgument(0));
+
         CreateQuoteCommand cmd = new CreateQuoteCommand(
                 1L,
                 List.of(
@@ -73,6 +69,7 @@ class QuoteServiceTest {
         Quote q = Quote.issue(1L, com.erp.common.domain.Money.of(5000), LocalDate.of(2026, 1, 1));
         q.assignId(42L);
         when(quoteRepository.findById(42L)).thenReturn(Optional.of(q));
+        when(quoteRepository.save(any(Quote.class))).thenAnswer(inv -> inv.getArgument(0));
 
         service.expireQuote(42L);
 
@@ -82,5 +79,18 @@ class QuoteServiceTest {
         verify(eventBus).publishAll(captor.capture());
         assertThat(captor.getValue()).hasAtLeastOneElementOfType(QuoteExpiredEvent.class);
         assertThat(q.getStatus()).isEqualTo(Quote.Status.EXPIRED);
+    }
+
+    @Test
+    void acceptQuote_는_상태를_ACCEPTED_로_전이() {
+        Quote q = Quote.issue(1L, com.erp.common.domain.Money.of(5000), LocalDate.of(2030, 1, 1));
+        q.assignId(7L);
+        when(quoteRepository.findById(7L)).thenReturn(Optional.of(q));
+        when(quoteRepository.save(any(Quote.class))).thenAnswer(inv -> inv.getArgument(0));
+
+        service.acceptQuote(7L);
+
+        assertThat(q.getStatus()).isEqualTo(Quote.Status.ACCEPTED);
+        verify(quoteRepository).save(q);
     }
 }

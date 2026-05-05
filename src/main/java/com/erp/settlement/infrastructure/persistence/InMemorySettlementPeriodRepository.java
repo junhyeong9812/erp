@@ -16,16 +16,16 @@ public class InMemorySettlementPeriodRepository
 
     @Override
     protected Long extractId(SettlementPeriod entity) {
-        return null;
+        return entity.getId();
     }
 
     @Override
     public Optional<SettlementPeriod> findOpenContaining(LocalDate date) {
-        return Optional.empty();
+        return findAllBy(p -> p.isOpen() && p.contains(date)).stream().findFirst();
     }
 
     @Override
     public List<SettlementPeriod> findOpenEndingBefore(LocalDate date) {
-        return List.of();
+        return findAllBy(p -> p.isOpen() && p.getEndDate().isBefore(date));
     }
 }

@@ -33,6 +33,14 @@ public class QuoteService implements QuoteUseCase {
     }
 
     @Override
+    public void acceptQuote(Long quoteId) {
+        Quote quote = quoteRepository.findById(quoteId).orElseThrow(NotFoundException::new);
+        quote.accept();
+        quoteRepository.save(quote);
+        eventBus.publishAll(quote.pullEvents());
+    }
+
+    @Override
     public void expireQuote(Long quoteId) {
         Quote quote = quoteRepository.findById(quoteId).orElseThrow(NotFoundException::new);
         quote.expire();

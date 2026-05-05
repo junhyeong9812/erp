@@ -49,6 +49,18 @@ public class Ledger extends BaseEntity {
         return l;
     }
 
+    /** 플랫폼 수수료 등 셀러에게 부과되는 비용. debit 에 수수료 금액 기록. */
+    public static Ledger fee(Long refId, Money amount, String desc, Long periodId) {
+        Ledger l = new Ledger();
+        l.type = Type.FEE;
+        l.referenceType = "FEE";
+        l.referenceId = refId;
+        l.debit = amount.amount().longValueExact();
+        l.description = desc;
+        l.periodId = periodId;
+        return l;
+    }
+
     public void assignId(Long id) { this.id = id; }
 
     public Long getId() { return id; }

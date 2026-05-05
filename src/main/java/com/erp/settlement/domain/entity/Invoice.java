@@ -18,6 +18,9 @@ public class Invoice extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Type type;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     private Long customerId;
     private long amount;
     private long taxAmount;
@@ -31,6 +34,7 @@ public class Invoice extends BaseEntity {
         Invoice i = new Invoice();
         i.invoiceNumber = number;
         i.type = type;
+        i.status = Status.OUTSTANDING;
         i.customerId = customerId;
         i.amount = amount.amount().longValueExact();
         i.taxAmount = tax.amount().longValueExact();
@@ -39,8 +43,21 @@ public class Invoice extends BaseEntity {
         return i;
     }
 
+    public void markPaid() { this.status = Status.PAID; }
+    public void cancel()   { this.status = Status.CANCELLED; }
+
     public void assignId(Long id) { this.id = id; }
+
     public Long getId() { return id; }
+    public String getInvoiceNumber() { return invoiceNumber; }
+    public Type getType() { return type; }
+    public Status getStatus() { return status; }
+    public Long getCustomerId() { return customerId; }
+    public Money getAmount() { return Money.of(amount); }
+    public Money getTaxAmount() { return Money.of(taxAmount); }
+    public LocalDateTime getIssuedAt() { return issuedAt; }
+    public Long getPeriodId() { return periodId; }
 
     public enum Type { SALES, PURCHASE }
+    public enum Status { OUTSTANDING, PAID, CANCELLED }
 }

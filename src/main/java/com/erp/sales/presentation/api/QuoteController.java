@@ -24,4 +24,10 @@ public class QuoteController {
         Long id = quoteUseCase.createQuote(new CreateQuoteCommand(req.customerId(), lines, req.validUntil()));
         return ResponseEntity.ok(id);
     }
+
+    @PostMapping("/{id}/accept")
+    public ResponseEntity<Void> accept(@PathVariable Long id) {
+        quoteUseCase.acceptQuote(id);
+        return ResponseEntity.noContent().build();
+    }
 }

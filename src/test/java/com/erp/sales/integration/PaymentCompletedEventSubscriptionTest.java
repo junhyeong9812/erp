@@ -1,43 +1,39 @@
 package com.erp.sales.integration;
 
-import com.erp.common.messaging.SpringEventBus;
 import com.erp.payment.domain.event.PaymentCompletedEvent;
+import com.erp.sales.application.port.inbound.SalesOrderUseCase;
+import com.erp.sales.application.usecase.PaymentCompletedEventHandler;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
-@SpringJUnitConfig
-@ContextConfiguration(classes = {
-        SpringEventBus.class,
-        PaymentCompletedEventSubscriptionTest.SalesPaymentListener.class
-})
+@ExtendWith(MockitoExtension.class)
 class PaymentCompletedEventSubscriptionTest {
 
-    @Component
-    static class SalesPaymentListener {
-        final List<PaymentCompletedEvent> received = new ArrayList<>();
-        @EventListener
-        public void on(PaymentCompletedEvent e) { received.add(e); }
-    }
-
-    @Autowired SpringEventBus bus;
-    @Autowired SalesPaymentListener listener;
+    @Mock SalesOrderUseCase salesOrderUseCase;
+    @InjectMocks PaymentCompletedEventHandler handler;
 
     @Test
-    void PaymentCompletedEvent_발행_시_구독자에_전달() {
-        bus.publish(new PaymentCompletedEvent(1L, 10L, 5000L, Instant.now()));
+    void PaymentCompletedEvent_수신_시_해당_주문을_confirm_호출() {
+        handler.on(new PaymentCompletedEvent(1L, 10L, 5000L, Instant.now()));
 
-        assertThat(listener.received).hasSize(1);
-        assertThat(listener.received.get(0).orderId()).isEqualTo(10L);
-        assertThat(listener.received.get(0).amount()).isEqualTo(5000L);
+        verify(salesOrderUseCase).confirm(10L);
+    }
+
+    @Test
+    void 이미_CONFIRMED_등의_상태여서_IllegalStateException_이_나도_무시() {
+        doThrow(new IllegalStateException("PLACED 상태만 확정 가능: CONFIRMED"))
+                .when(salesOrderUseCase).confirm(99L);
+
+        // throw 가 위로 전파되지 않아야 함 — 멱등성 보장
+        handler.on(new PaymentCompletedEvent(1L, 99L, 5000L, Instant.now()));
+
+        verify(salesOrderUseCase).confirm(99L);
     }
 }

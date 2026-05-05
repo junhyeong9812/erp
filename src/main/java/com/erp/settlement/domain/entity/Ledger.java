@@ -92,4 +92,9 @@ public class Ledger extends BaseEntity {
     public String getReferenceType() { return referenceType; }
     public Long getReferenceId() { return referenceId; }
     public String getDescription() { return description; }
+
+    /** 마감 경계 이월 — 연습용 간소화. 실전에선 REVERSAL + 새 기간 재기표가 이상적. */
+    public void reassignPeriod(Long newPeriodId) {
+        this.periodId = newPeriodId;
+    }
 }

@@ -1,18 +1,16 @@
 package com.erp.common.exception;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = GlobalExceptionHandlerTest.Dummy.class)
-@Import(GlobalExceptionHandler.class)
 class GlobalExceptionHandlerTest {
 
     @RestController
@@ -22,7 +20,16 @@ class GlobalExceptionHandlerTest {
         @GetMapping("/t/unexpected") void unexp()   { throw new RuntimeException("boom"); }
     }
 
-    @Autowired MockMvc mvc;
+    private MockMvc mvc;
+
+    @BeforeEach
+    void setUp() {
+        // standaloneSetup 으로 advice 를 명시적으로 등록 — @WebMvcTest + @Import 가 advice
+        // 를 인식하지 못하는 Spring Boot 3.5 환경에서도 안정적으로 동작.
+        mvc = MockMvcBuilders.standaloneSetup(new Dummy())
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
+    }
 
     @Test
     void BusinessException_은_해당_ErrorCode_상태코드로_응답() throws Exception {

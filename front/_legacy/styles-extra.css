@@ -1,0 +1,481 @@
+/* Additional styles for v3 — modals, vertical stepper, customer panel, bar chart */
+
+/* Modal */
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(15, 18, 22, 0.42);
+  display: grid; place-items: center; z-index: 60;
+  animation: fade-in 0.18s ease-out;
+  backdrop-filter: blur(2px);
+}
+.modal {
+  width: 460px; max-width: 92vw; max-height: 88vh;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: 10px; box-shadow: 0 24px 60px -12px rgba(0,0,0,0.28);
+  display: flex; flex-direction: column;
+  animation: modal-in 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.modal-head {
+  padding: 18px 20px 14px; border-bottom: 1px solid var(--divider);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.modal-title { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+.modal-sub { font-size: 11.5px; color: var(--text-3); margin-top: 3px; font-family: ui-monospace, monospace; }
+.modal-body {
+  padding: 18px 20px; flex: 1; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.modal-foot {
+  padding: 12px 20px; border-top: 1px solid var(--divider);
+  display: flex; gap: 8px;
+}
+
+.kv-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+  padding: 10px 12px; background: var(--bg-elev); border-radius: 6px;
+}
+.kv-grid > div { display: flex; flex-direction: column; gap: 2px; font-size: 12px; }
+.kv-grid .strong { font-size: 13px; }
+
+.amount-chips { display: flex; gap: 6px; margin-top: 4px; }
+.chip-sm {
+  appearance: none; background: var(--bg-elev); border: 1px solid var(--border);
+  padding: 3px 8px; border-radius: 12px; font-size: 11px; font-weight: 500;
+  color: var(--text-2); cursor: pointer;
+}
+.chip-sm:hover { background: var(--accent-soft); color: var(--accent-ink); }
+
+.auto-note {
+  display: flex; gap: 8px; align-items: flex-start;
+  padding: 9px 11px; background: var(--accent-soft); color: var(--accent-ink);
+  border-radius: 6px; font-size: 12px; line-height: 1.45;
+}
+.auto-note svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; }
+
+/* Spinner */
+.proc { display: flex; flex-direction: column; align-items: center; }
+.spinner {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 2.5px solid var(--bg-elev);
+  border-top-color: var(--accent);
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Success checkmark */
+.success-mark { display: grid; place-items: center; }
+.success-mark svg { width: 60px; height: 60px; }
+.success-mark circle {
+  fill: var(--ok-soft); stroke: var(--ok-ink); stroke-width: 1.5;
+  stroke-dasharray: 90; stroke-dashoffset: 90;
+  animation: circle-draw 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.success-mark path {
+  fill: none; stroke: var(--ok-ink); stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 24; stroke-dashoffset: 24;
+  animation: check-draw 0.35s ease-out 0.35s forwards;
+}
+@keyframes circle-draw { to { stroke-dashoffset: 0; } }
+@keyframes check-draw  { to { stroke-dashoffset: 0; } }
+
+.ledger-preview {
+  margin-top: 12px; padding: 12px 14px;
+  background: var(--bg-elev); border-radius: 6px;
+  border: 1px dashed var(--border);
+  animation: fade-in 0.4s ease-out 0.6s backwards;
+}
+
+/* Vertical stepper for approvals */
+.vstepper { display: flex; flex-direction: column; }
+.vstep { display: flex; gap: 14px; min-height: 64px; }
+.vstep-rail {
+  display: flex; flex-direction: column; align-items: center;
+  flex-shrink: 0; padding-top: 2px;
+}
+.vstep-dot {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 11px; font-weight: 600;
+  border: 1.5px solid var(--border);
+  background: var(--panel); color: var(--text-3);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+.vstep-dot svg { width: 13px; height: 13px; stroke-width: 2; }
+.vstep-line {
+  flex: 1; width: 1.5px;
+  background: var(--border);
+  margin-top: 2px;
+  transition: background 0.4s ease;
+}
+.vstep.done   .vstep-dot { background: var(--ok-soft); border-color: var(--ok-ink); color: var(--ok-ink); }
+.vstep.done   .vstep-line { background: var(--ok-ink); }
+.vstep.now    .vstep-dot { background: var(--warn-soft); border-color: var(--warn-ink); color: var(--warn-ink); }
+.vstep.rejected .vstep-dot { background: var(--danger-soft); border-color: var(--danger-ink); color: var(--danger-ink); }
+.vstep.wait   .vstep-dot { background: var(--bg-elev); }
+
+.pulse-ring {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--warn-ink);
+  box-shadow: 0 0 0 0 var(--warn-ink);
+  animation: pulse-ring 1.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 color-mix(in oklch, var(--warn-ink) 60%, transparent); }
+  70%  { box-shadow: 0 0 0 8px color-mix(in oklch, var(--warn-ink) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--warn-ink) 0%, transparent); }
+}
+
+.vstep-body {
+  flex: 1; padding-bottom: 14px;
+}
+.vstep-comment {
+  margin-top: 6px; padding: 7px 10px;
+  background: var(--bg-elev); border-radius: 5px;
+  font-size: 12px; color: var(--text-2); line-height: 1.4;
+  border-left: 2px solid var(--border);
+}
+.vstep.done .vstep-comment { border-left-color: var(--ok-ink); }
+.vstep.rejected .vstep-comment { border-left-color: var(--danger-ink); color: var(--danger-ink); }
+
+/* Step bar inline */
+.step-bar {
+  display: inline-block; padding: 1px 6px; border-radius: 3px;
+  background: var(--warn-soft); color: var(--warn-ink);
+  font-weight: 600; font-size: 11px;
+}
+
+/* Row clickable */
+.row-clickable { cursor: pointer; }
+.row-clickable:hover td { background: var(--hover); }
+
+/* Customer avatar */
+.cust-avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--accent), color-mix(in oklch, var(--accent) 70%, black));
+  color: white; font-weight: 700; font-size: 13px;
+  letter-spacing: -0.01em;
+}
+
+/* Bar chart */
+.bar-chart {
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px;
+  height: 110px; align-items: end;
+  padding: 6px 4px 0;
+}
+.bar-col {
+  display: flex; flex-direction: column; align-items: center;
+  height: 100%; justify-content: flex-end;
+  gap: 6px;
+}
+.bar-fill {
+  width: 100%; max-width: 32px;
+  background: linear-gradient(180deg, var(--accent), color-mix(in oklch, var(--accent) 75%, transparent));
+  border-radius: 3px 3px 0 0;
+  height: 0;
+  animation: bar-grow 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes bar-grow {
+  from { height: 0; }
+}
+.bar-label {
+  font-size: 10.5px; color: var(--text-3); font-variant-numeric: tabular-nums;
+}
+
+/* Mini list */
+.mini-list { display: flex; flex-direction: column; }
+.mini-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 10px; border-bottom: 1px solid var(--divider);
+  font-size: 12.5px;
+}
+.mini-row:last-child { border-bottom: none; }
+
+/* Mini timeline */
+.timeline-mini { position: relative; padding-left: 8px; }
+.timeline-mini::before {
+  content: ""; position: absolute;
+  left: 3.5px; top: 6px; bottom: 6px; width: 1.5px;
+  background: var(--border);
+}
+.tl-row {
+  position: relative; padding: 8px 0 8px 14px;
+  display: flex; gap: 6px;
+}
+.tl-dot {
+  position: absolute; left: -2px; top: 14px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 2.5px var(--panel);
+}
+
+/* ---------- v3: Quote line items ---------- */
+.line-items {
+  border: 1px solid var(--divider); border-radius: 6px;
+  background: var(--panel); overflow: hidden;
+}
+.line-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 14px; border-bottom: 1px solid var(--divider);
+  font-size: 12.5px;
+}
+.line-row:last-child { border-bottom: none; }
+.line-row.total {
+  background: var(--bg-elev);
+  border-top: 1.5px solid var(--border);
+}
+
+/* ---------- v3: Quote → Order conversion trace ---------- */
+.convert-trace {
+  margin-top: 26px; width: 100%;
+  display: flex; flex-direction: column; gap: 0;
+  background: var(--bg-elev); border-radius: 8px;
+  padding: 14px 16px;
+  animation: fade-in 0.45s ease-out 0.5s backwards;
+}
+.trace-step {
+  display: flex; gap: 12px; align-items: center;
+  padding: 4px 0;
+}
+.trace-dot {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--ok-soft); color: var(--ok-ink);
+  display: grid; place-items: center;
+  border: 1.5px solid var(--ok-ink);
+  flex-shrink: 0;
+}
+.trace-dot.accent { background: var(--accent-soft); color: var(--accent-ink); border-color: var(--accent-ink); }
+.trace-dot svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.trace-dot-pip {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--text-3);
+}
+.trace-step.wait .trace-dot {
+  background: var(--panel); border: 1.5px dashed var(--border);
+}
+.trace-line {
+  width: 1.5px; height: 14px; background: var(--ok-ink);
+  margin-left: 12.25px;
+  animation: trace-line-grow 0.4s ease-out forwards;
+}
+.trace-line.dim { background: var(--border); }
+@keyframes trace-line-grow {
+  from { height: 0; }
+  to { height: 14px; }
+}
+
+/* ---------- v3: PO progress bar (inline + panel) ---------- */
+.po-bar {
+  width: 60px; height: 4px; border-radius: 2px;
+  background: var(--bg-elev);
+  overflow: hidden;
+}
+.po-bar-fill {
+  height: 100%; background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.po-progress { margin-top: 8px; }
+.po-progress-bar {
+  width: 100%; height: 6px; border-radius: 3px;
+  background: var(--bg-elev); overflow: hidden;
+}
+.po-progress-fill {
+  height: 100%; background: var(--accent);
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- v3: Check list ---------- */
+.check-list {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.check-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 6px;
+  border: 1px solid var(--divider);
+  background: var(--panel);
+  cursor: pointer; font-size: 12.5px;
+  transition: all 0.18s ease;
+}
+.check-row:hover { background: var(--hover); }
+.check-row input[type="checkbox"] { display: none; }
+.check-box {
+  width: 18px; height: 18px; border-radius: 4px;
+  border: 1.5px solid var(--border);
+  background: var(--panel);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.check-box svg {
+  width: 12px; height: 12px;
+  fill: none; stroke: white; stroke-width: 3;
+  stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 18; stroke-dashoffset: 18;
+  animation: check-box-draw 0.25s ease-out forwards;
+}
+@keyframes check-box-draw { to { stroke-dashoffset: 0; } }
+.check-row.checked {
+  background: color-mix(in oklch, var(--ok-soft) 60%, var(--panel));
+  border-color: var(--ok-ink);
+}
+.check-row.checked .check-box {
+  background: var(--ok-ink);
+  border-color: var(--ok-ink);
+}
+
+/* ---------- v3: Stock delta card ---------- */
+.stock-delta {
+  margin-top: 22px;
+  padding: 16px 20px;
+  background: var(--bg-elev);
+  border-radius: 8px;
+  border: 1px dashed var(--border);
+  width: 100%;
+  animation: fade-in 0.45s ease-out 0.5s backwards;
+}
+.stock-arrow {
+  color: var(--accent-ink);
+  display: grid; place-items: center;
+  animation: arrow-slide 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.6s backwards;
+}
+@keyframes arrow-slide {
+  from { transform: translateX(-6px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+
+/* ============================================================
+ * Supplier claim — workflow stepper, response card, timeline
+ * ============================================================ */
+.claim-flow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding: 14px 4px 6px;
+  position: relative;
+}
+.claim-step {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  min-width: 0;
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.claim-step-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--bg-elev);
+  border: 1.5px solid var(--border);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+}
+.claim-step-dot svg {
+  width: 14px; height: 14px; fill: none;
+  stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+}
+.claim-step-label {
+  font-size: 11.5px;
+  text-align: center;
+  color: var(--text-2);
+  line-height: 1.3;
+  max-width: 78px;
+}
+.claim-step.done .claim-step-dot {
+  background: var(--ok-ink); border-color: var(--ok-ink); color: white;
+  animation: claim-pop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.claim-step.done .claim-step-label { color: var(--text-1); font-weight: 500; }
+.claim-step.now .claim-step-dot {
+  background: var(--warn-soft); border-color: var(--warn-ink); color: var(--warn-ink);
+}
+.claim-step.now .claim-step-label { color: var(--text-1); font-weight: 600; }
+.claim-step.rejected .claim-step-dot {
+  background: var(--danger-ink); border-color: var(--danger-ink); color: white;
+}
+.claim-step.rejected .claim-step-label { color: var(--danger-ink); font-weight: 600; }
+.claim-step.wait .claim-step-label { color: var(--text-3); }
+
+@keyframes claim-pop {
+  0% { transform: scale(0.6); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.claim-step-line {
+  height: 1.5px; background: var(--border);
+  margin-top: 13px; /* aligns with center of 28px dot */
+  flex: 1 1 auto;
+  min-width: 18px;
+  align-self: flex-start;
+  transition: background 0.4s ease;
+}
+.claim-step-line.done {
+  background: var(--ok-ink);
+}
+
+.claim-desc {
+  margin-top: 10px;
+  padding: 9px 11px;
+  background: var(--bg-elev);
+  border-left: 2px solid var(--border);
+  border-radius: 4px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-2);
+}
+
+/* Supplier response card */
+.supplier-response {
+  border: 1px solid var(--border);
+  border-left: 2.5px solid var(--warn-ink);
+  border-radius: 6px;
+  background: color-mix(in oklch, var(--warn-soft) 35%, var(--bg-elev));
+  padding: 11px 13px;
+  display: flex; flex-direction: column; gap: 9px;
+  animation: response-in 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes response-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.supplier-response-head {
+  display: flex; align-items: center; gap: 10px;
+}
+.supplier-response-body {
+  font-size: 12.5px; line-height: 1.55;
+  color: var(--text-1);
+  padding-left: 38px;
+}
+
+/* Claim history timeline */
+.claim-timeline {
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative;
+  padding-left: 14px;
+}
+.claim-timeline::before {
+  content: "";
+  position: absolute;
+  left: 4px; top: 6px; bottom: 6px;
+  width: 1px;
+  background: var(--border);
+}
+.claim-tl-row {
+  display: flex; gap: 10px; align-items: flex-start;
+  position: relative;
+}
+.claim-tl-dot {
+  position: absolute; left: -14px; top: 5px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--text-3);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--border);
+}
+.claim-tl-dot.ok { background: var(--ok-ink); box-shadow: 0 0 0 1px var(--ok-ink); }
+.claim-tl-dot.warn { background: var(--warn-ink); box-shadow: 0 0 0 1px var(--warn-ink); }
+.claim-tl-dot.danger { background: var(--danger-ink); box-shadow: 0 0 0 1px var(--danger-ink); }

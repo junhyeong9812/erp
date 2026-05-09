@@ -23,4 +23,8 @@ logs/
 *.trace.db
 *.lock.db
 
-.docs/phase
+# Docs (local only)
+docs/
+
+# Local Claude settings
+.claude/

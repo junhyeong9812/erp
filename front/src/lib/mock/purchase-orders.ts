@@ -1,0 +1,50 @@
+import type { PurchaseOrder } from "@/lib/types";
+
+export const initialPurchaseOrders: readonly PurchaseOrder[] = [
+  {
+    id: 5008,
+    supplier: "ABC상사",
+    productId: 100,
+    quantity: 50,
+    unitPrice: 1_180_000,
+    status: "COMPLETED",
+    issuedAt: "2026-04-28T09:00:00",
+  },
+  {
+    id: 5009,
+    supplier: "동성유통",
+    productId: 105,
+    quantity: 40,
+    unitPrice: 248_000,
+    status: "PARTIAL",
+    issuedAt: "2026-05-01T11:00:00",
+    received: 22,
+  },
+  {
+    id: 5010,
+    supplier: "글로벌소싱",
+    productId: 107,
+    quantity: 100,
+    unitPrice: 138_000,
+    status: "ISSUED",
+    issuedAt: "2026-05-04T08:30:00",
+  },
+  {
+    id: 5011,
+    supplier: "ABC상사",
+    productId: 101,
+    quantity: 30,
+    unitPrice: 480_000,
+    status: "ISSUED",
+    issuedAt: "2026-05-04T10:15:00",
+  },
+  {
+    id: 5007,
+    supplier: "한미테크",
+    productId: 102,
+    quantity: 200,
+    unitPrice: 124_000,
+    status: "COMPLETED",
+    issuedAt: "2026-04-22T14:00:00",
+  },
+];

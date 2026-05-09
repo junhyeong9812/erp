@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
-import { Button } from "@/components/ui/button";
-import { Icon } from "@/components/icons";
 import { PageHead } from "@/components/erp/page-head";
 import { PurchaseOrdersTable } from "@/features/purchase/purchase-orders-table";
+import { PoCreateButton } from "@/features/purchase/po-create-button";
+import { PoCreateSheet } from "@/features/purchase/po-create-sheet";
 import { initialPurchaseOrders } from "@/lib/mock";
 
 export default async function PurchasePage() {
@@ -21,14 +21,10 @@ export default async function PurchasePage() {
           count: initialPurchaseOrders.length,
           ongoing,
         })}
-        actions={
-          <Button size="sm">
-            <Icon.Plus className="size-3.5" />
-            {tPurchase("newPo")}
-          </Button>
-        }
+        actions={<PoCreateButton />}
       />
       <PurchaseOrdersTable />
+      <PoCreateSheet />
     </div>
   );
 }

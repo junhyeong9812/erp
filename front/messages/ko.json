@@ -339,6 +339,26 @@
     },
     "toast": {
       "received": "전체 입고 처리됨 · 재고 자동 갱신"
+    },
+    "create": {
+      "title": "발주 등록",
+      "subtitle": "공급자와 상품/수량/단가를 입력해 신규 발주서를 만듭니다",
+      "supplierLabel": "공급자",
+      "supplierPlaceholder": "공급자를 선택하세요",
+      "errorSupplier": "공급자를 선택해 주세요",
+      "productLabel": "상품",
+      "productPlaceholder": "상품 선택",
+      "errorProduct": "상품을 선택해 주세요",
+      "qtyLabel": "수량",
+      "qtyPlaceholder": "수량",
+      "errorQty": "1 이상의 수량을 입력하세요",
+      "priceLabel": "단가",
+      "pricePlaceholder": "단가",
+      "errorPrice": "1 이상의 단가를 입력하세요",
+      "totalLabel": "총액",
+      "submit": "등록",
+      "toastCreated": "발주 PO-{id} 등록 완료",
+      "toastFailed": "발주 등록 실패"
     }
   },
   "SellerNav": {

@@ -339,6 +339,26 @@
     },
     "toast": {
       "received": "Received in full · Stock updated"
+    },
+    "create": {
+      "title": "New Purchase Order",
+      "subtitle": "Pick a supplier, product, quantity and unit price",
+      "supplierLabel": "Supplier",
+      "supplierPlaceholder": "Select a supplier",
+      "errorSupplier": "Supplier is required",
+      "productLabel": "Product",
+      "productPlaceholder": "Select product",
+      "errorProduct": "Product is required",
+      "qtyLabel": "Quantity",
+      "qtyPlaceholder": "Qty",
+      "errorQty": "Quantity must be at least 1",
+      "priceLabel": "Unit price",
+      "pricePlaceholder": "Unit price",
+      "errorPrice": "Unit price must be at least 1",
+      "totalLabel": "Total",
+      "submit": "Create",
+      "toastCreated": "PO-{id} created",
+      "toastFailed": "Failed to create purchase order"
     }
   },
   "SellerNav": {

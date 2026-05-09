@@ -24,6 +24,13 @@ export interface OrderCreateInput {
   lines: Array<{ productId: number; quantity: number; unitPrice: number }>;
 }
 
+export interface PoCreateInput {
+  supplier: string;
+  productId: number;
+  quantity: number;
+  unitPrice: number;
+}
+
 interface ErpState {
   orders: Order[];
   shipments: Shipment[];
@@ -36,12 +43,14 @@ interface ErpState {
   openDeliveryId: number | null;
   openPurchaseOrderId: number | null;
   orderCreateOpen: boolean;
+  purchaseOrderCreateOpen: boolean;
 
   payOrder: (orderId: number) => Result;
   dispatchShipment: (shipmentId: number) => Result;
   completeDelivery: (deliveryId: number) => Result;
   receivePurchaseOrder: (poId: number) => Result;
   createOrder: (input: OrderCreateInput) => Result<number>;
+  createPurchaseOrder: (input: PoCreateInput) => Result<number>;
 
   openOrder: (orderId: number) => void;
   closeOrder: () => void;
@@ -53,6 +62,8 @@ interface ErpState {
   closePurchaseOrder: () => void;
   openOrderCreate: () => void;
   closeOrderCreate: () => void;
+  openPurchaseOrderCreate: () => void;
+  closePurchaseOrderCreate: () => void;
 }
 
 const REGION_BY_GRADE: Record<string, string> = {
@@ -76,6 +87,7 @@ export const useErpStore = create<ErpState>((set, get) => ({
   openDeliveryId: null,
   openPurchaseOrderId: null,
   orderCreateOpen: false,
+  purchaseOrderCreateOpen: false,
 
   openOrder: (id) => set({ openOrderId: id }),
   closeOrder: () => set({ openOrderId: null }),
@@ -87,6 +99,8 @@ export const useErpStore = create<ErpState>((set, get) => ({
   closePurchaseOrder: () => set({ openPurchaseOrderId: null }),
   openOrderCreate: () => set({ orderCreateOpen: true }),
   closeOrderCreate: () => set({ orderCreateOpen: false }),
+  openPurchaseOrderCreate: () => set({ purchaseOrderCreateOpen: true }),
+  closePurchaseOrderCreate: () => set({ purchaseOrderCreateOpen: false }),
 
   createOrder: (input) => {
     const state = get();
@@ -113,6 +127,25 @@ export const useErpStore = create<ErpState>((set, get) => ({
       shipmentId: null,
     };
     set({ orders: [newOrder, ...state.orders] });
+    return { ok: true, value: newId };
+  },
+
+  createPurchaseOrder: (input) => {
+    const state = get();
+    if (input.quantity < 1 || input.unitPrice < 1) {
+      return { ok: false, reason: "INVALID_LINE" };
+    }
+    const newId = Math.max(0, ...state.purchaseOrders.map((p) => p.id)) + 1;
+    const newPo: PurchaseOrder = {
+      id: newId,
+      supplier: input.supplier,
+      productId: input.productId,
+      quantity: input.quantity,
+      unitPrice: input.unitPrice,
+      status: "ISSUED",
+      issuedAt: new Date().toISOString(),
+    };
+    set({ purchaseOrders: [newPo, ...state.purchaseOrders] });
     return { ok: true, value: newId };
   },
 

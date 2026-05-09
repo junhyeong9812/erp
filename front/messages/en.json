@@ -126,6 +126,26 @@
     },
     "toast": {
       "paymentDone": "Payment completed · Shipment created"
+    },
+    "create": {
+      "title": "New Order",
+      "subtitle": "Pick a customer and add line items",
+      "customerLabel": "Customer",
+      "customerPlaceholder": "Select a customer",
+      "errorCustomer": "Customer is required",
+      "linesLabel": "Line items",
+      "addLine": "Add line",
+      "removeLine": "Remove line",
+      "productPlaceholder": "Select product",
+      "qtyPlaceholder": "Qty",
+      "priceePlaceholder": "Unit price",
+      "subtotalLabel": "Subtotal",
+      "totalLabel": "Total",
+      "submit": "Create",
+      "errorLine": "Please check line item fields",
+      "errorAtLeastOne": "At least one line item is required",
+      "toastCreated": "Order #{id} created",
+      "toastFailed": "Failed to create order"
     }
   },
   "Shipments": {

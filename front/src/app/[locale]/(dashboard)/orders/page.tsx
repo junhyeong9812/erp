@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
-import { Button } from "@/components/ui/button";
-import { Icon } from "@/components/icons";
 import { PageHead } from "@/components/erp/page-head";
 import { OrdersTable } from "@/features/orders/orders-table";
+import { OrderCreateButton } from "@/features/orders/order-create-button";
+import { OrderCreateSheet } from "@/features/orders/order-create-sheet";
 import { initialOrders } from "@/lib/mock";
 
 export default async function OrdersPage() {
@@ -14,14 +14,10 @@ export default async function OrdersPage() {
       <PageHead
         title={tPage("title")}
         sub={tOrders("subtitleCount", { count: initialOrders.length })}
-        actions={
-          <Button size="sm">
-            <Icon.Plus className="size-3.5" />
-            {tOrders("newOrder")}
-          </Button>
-        }
+        actions={<OrderCreateButton />}
       />
       <OrdersTable />
+      <OrderCreateSheet />
     </div>
   );
 }

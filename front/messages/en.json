@@ -850,6 +850,31 @@
       "APPROVED": "Approved",
       "REJECTED": "Rejected",
       "CANCELLED": "Cancelled"
+    },
+    "create": {
+      "triggerLabel": "Draft new",
+      "title": "New approval draft",
+      "subtitle": "Create an approval document for review",
+      "typeLabel": "Type",
+      "type": {
+        "EXPENSE": "Expense",
+        "PROCUREMENT": "Procurement",
+        "LEAVE": "Leave",
+        "OTHER": "Other"
+      },
+      "titleLabel": "Title",
+      "titlePlaceholder": "e.g. May travel reimbursement",
+      "errorTitle": "Title is required",
+      "amountLabel": "Amount",
+      "amountPlaceholder": "KRW",
+      "errorAmount": "Amount must be 0 or higher",
+      "approversLabel": "Approvers",
+      "approverHint": "Pick at least one (multi-select)",
+      "errorApprovers": "At least one approver is required",
+      "stepsPreview": "{count} approver(s) selected · total {count} step(s)",
+      "submit": "Submit draft",
+      "toastCreated": "AP-{id} created",
+      "toastFailed": "Failed to create draft"
     }
   },
   "Notifications": {

@@ -850,6 +850,31 @@
       "APPROVED": "승인",
       "REJECTED": "반려",
       "CANCELLED": "취소"
+    },
+    "create": {
+      "triggerLabel": "기안 작성",
+      "title": "기안 작성",
+      "subtitle": "결재 문서를 작성합니다",
+      "typeLabel": "유형",
+      "type": {
+        "EXPENSE": "비용",
+        "PROCUREMENT": "구매",
+        "LEAVE": "휴가",
+        "OTHER": "기타"
+      },
+      "titleLabel": "제목",
+      "titlePlaceholder": "예: 5월 출장비 정산",
+      "errorTitle": "제목을 입력하세요",
+      "amountLabel": "금액",
+      "amountPlaceholder": "원",
+      "errorAmount": "0 이상의 금액을 입력하세요",
+      "approversLabel": "결재자",
+      "approverHint": "최소 1명 (다중 선택)",
+      "errorApprovers": "결재자를 1명 이상 선택하세요",
+      "stepsPreview": "선택된 결재자 {count}명 · 총 {count}단계 (1/{count} 시작)",
+      "submit": "기안 제출",
+      "toastCreated": "AP-{id} 기안 등록 완료",
+      "toastFailed": "기안 등록 실패"
     }
   },
   "Notifications": {

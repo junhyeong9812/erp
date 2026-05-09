@@ -5,6 +5,7 @@ import {
   initialDeliveries,
   initialStocks,
   initialPurchaseOrders,
+  APPROVALS,
   lookupCustomer,
 } from "@/lib/mock";
 import type {
@@ -13,6 +14,8 @@ import type {
   Delivery,
   Stock,
   PurchaseOrder,
+  ApprovalDocument,
+  ApprovalDocumentType,
 } from "@/lib/types";
 
 type Result<T = number> =
@@ -31,12 +34,22 @@ export interface PoCreateInput {
   unitPrice: number;
 }
 
+export interface ApprovalDraftInput {
+  documentType: ApprovalDocumentType;
+  title: string;
+  amount: number;
+  approverIds: number[];
+}
+
+const DEFAULT_DRAFTER_ID = 1;
+
 interface ErpState {
   orders: Order[];
   shipments: Shipment[];
   deliveries: Delivery[];
   stocks: Stock[];
   purchaseOrders: PurchaseOrder[];
+  approvals: ApprovalDocument[];
 
   openOrderId: number | null;
   openShipmentId: number | null;
@@ -44,6 +57,7 @@ interface ErpState {
   openPurchaseOrderId: number | null;
   orderCreateOpen: boolean;
   purchaseOrderCreateOpen: boolean;
+  approvalDraftOpen: boolean;
 
   payOrder: (orderId: number) => Result;
   dispatchShipment: (shipmentId: number) => Result;
@@ -51,6 +65,7 @@ interface ErpState {
   receivePurchaseOrder: (poId: number) => Result;
   createOrder: (input: OrderCreateInput) => Result<number>;
   createPurchaseOrder: (input: PoCreateInput) => Result<number>;
+  createApprovalDraft: (input: ApprovalDraftInput) => Result<number>;
 
   openOrder: (orderId: number) => void;
   closeOrder: () => void;
@@ -64,6 +79,8 @@ interface ErpState {
   closeOrderCreate: () => void;
   openPurchaseOrderCreate: () => void;
   closePurchaseOrderCreate: () => void;
+  openApprovalDraft: () => void;
+  closeApprovalDraft: () => void;
 }
 
 const REGION_BY_GRADE: Record<string, string> = {
@@ -81,6 +98,7 @@ export const useErpStore = create<ErpState>((set, get) => ({
   deliveries: [...initialDeliveries],
   stocks: [...initialStocks],
   purchaseOrders: [...initialPurchaseOrders],
+  approvals: [...APPROVALS],
 
   openOrderId: null,
   openShipmentId: null,
@@ -88,6 +106,7 @@ export const useErpStore = create<ErpState>((set, get) => ({
   openPurchaseOrderId: null,
   orderCreateOpen: false,
   purchaseOrderCreateOpen: false,
+  approvalDraftOpen: false,
 
   openOrder: (id) => set({ openOrderId: id }),
   closeOrder: () => set({ openOrderId: null }),
@@ -101,6 +120,8 @@ export const useErpStore = create<ErpState>((set, get) => ({
   closeOrderCreate: () => set({ orderCreateOpen: false }),
   openPurchaseOrderCreate: () => set({ purchaseOrderCreateOpen: true }),
   closePurchaseOrderCreate: () => set({ purchaseOrderCreateOpen: false }),
+  openApprovalDraft: () => set({ approvalDraftOpen: true }),
+  closeApprovalDraft: () => set({ approvalDraftOpen: false }),
 
   createOrder: (input) => {
     const state = get();
@@ -127,6 +148,34 @@ export const useErpStore = create<ErpState>((set, get) => ({
       shipmentId: null,
     };
     set({ orders: [newOrder, ...state.orders] });
+    return { ok: true, value: newId };
+  },
+
+  createApprovalDraft: (input) => {
+    const state = get();
+    if (input.approverIds.length === 0) {
+      return { ok: false, reason: "EMPTY_APPROVERS" };
+    }
+    if (input.title.trim().length === 0) {
+      return { ok: false, reason: "EMPTY_TITLE" };
+    }
+    const newId = Math.max(0, ...state.approvals.map((a) => a.id)) + 1;
+    const isAmountLess =
+      input.documentType === "LEAVE" || input.documentType === "OTHER";
+    const newDoc: ApprovalDocument = {
+      id: newId,
+      drafterId: DEFAULT_DRAFTER_ID,
+      documentType: input.documentType,
+      title: input.title.trim(),
+      amount: isAmountLess ? null : input.amount,
+      status: "IN_PROGRESS",
+      currentStep: 1,
+      totalSteps: input.approverIds.length,
+      approverIds: input.approverIds,
+      draftedAt: new Date().toISOString(),
+      finalizedAt: null,
+    };
+    set({ approvals: [newDoc, ...state.approvals] });
     return { ok: true, value: newId };
   },
 

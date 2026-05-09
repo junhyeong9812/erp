@@ -1,11 +1,14 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/badge";
 import { fmtKRW, fmtDateTime } from "@/lib/format";
-import { APPROVALS } from "@/lib/mock";
 import { lookupEmployee } from "@/lib/mock/hr";
+import { useErpStore } from "@/store/erp-store";
 
-export async function ApprovalsView() {
-  const t = await getTranslations("Approvals");
+export function ApprovalsView() {
+  const t = useTranslations("Approvals");
+  const approvals = useErpStore((s) => s.approvals);
 
   return (
     <div className="overflow-hidden rounded-lg border border-border bg-panel">
@@ -23,7 +26,7 @@ export async function ApprovalsView() {
           </tr>
         </thead>
         <tbody>
-          {APPROVALS.map((a) => {
+          {approvals.map((a) => {
             const drafter = lookupEmployee(a.drafterId);
             return (
               <tr

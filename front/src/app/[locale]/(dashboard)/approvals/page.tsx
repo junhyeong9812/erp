@@ -1,6 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { PageHead } from "@/components/erp/page-head";
 import { ApprovalsView } from "@/features/approvals/approvals-view";
+import { ApprovalDraftButton } from "@/features/approvals/approval-draft-button";
+import { ApprovalDraftSheet } from "@/features/approvals/approval-draft-sheet";
 import { APPROVALS } from "@/lib/mock";
 
 export default async function ApprovalsPage() {
@@ -15,8 +17,10 @@ export default async function ApprovalsPage() {
           count: APPROVALS.length,
           inProgress,
         })}
+        actions={<ApprovalDraftButton />}
       />
       <ApprovalsView />
+      <ApprovalDraftSheet />
     </div>
   );
 }

@@ -1,0 +1,923 @@
+{
+  "Brand": {
+    "name": "Logiform",
+    "subtitle": "물류 ERP"
+  },
+  "Nav": {
+    "main": "메인",
+    "sales": "영업",
+    "logistics": "물류",
+    "supply": "공급망",
+    "finance": "재무",
+    "operations": "운영",
+    "admin": "관리",
+    "dashboard": "대시보드",
+    "quotes": "견적",
+    "orders": "수주",
+    "payments": "결제",
+    "crm": "고객",
+    "shipments": "출고",
+    "deliveries": "배송 추적",
+    "stocks": "재고",
+    "purchase": "발주",
+    "suppliers": "공급자",
+    "production": "생산",
+    "settlement": "정산",
+    "approvals": "전자결재",
+    "notifications": "알림",
+    "reports": "리포트",
+    "hr": "인사"
+  },
+  "Topbar": {
+    "searchPlaceholder": "주문·고객·상품·송장 통합 검색",
+    "openNotifications": "알림 열기",
+    "openSettings": "설정 열기",
+    "themeLight": "라이트",
+    "themeDark": "다크",
+    "themeSystem": "시스템",
+    "languageToggle": "언어 전환",
+    "switchToSeller": "판매자 모드로",
+    "switchToAdmin": "관리자 모드로"
+  },
+  "User": {
+    "name": "서준",
+    "role": "물류팀 · 매니저"
+  },
+  "Common": {
+    "refresh": "새로고침",
+    "export": "내보내기",
+    "create": "생성",
+    "save": "저장",
+    "cancel": "취소",
+    "close": "닫기",
+    "loading": "불러오는 중…",
+    "empty": "데이터가 없습니다",
+    "comingSoon": "곧 제공됩니다",
+    "placeholderHint": "이 화면은 다음 단계에서 구현됩니다.",
+    "vsYesterday": "어제 대비",
+    "vsAvg": "평균 대비",
+    "vsLastWeek": "지난주 대비"
+  },
+  "Status": {
+    "PLACED": "수주",
+    "CONFIRMED": "결제완료",
+    "SHIPPED": "출고됨",
+    "COMPLETED": "완료",
+    "CANCELLED": "취소",
+    "REFUNDED": "환불",
+    "PREPARING": "출고준비",
+    "DISPATCHED": "배차완료",
+    "ASSIGNED": "배정",
+    "IN_TRANSIT": "운송중",
+    "DELIVERED": "배송완료",
+    "RETURNED": "반송",
+    "ISSUED": "발주",
+    "PARTIAL": "부분입고",
+    "PENDING": "대기"
+  },
+  "Demo": {
+    "kpiTodaySales": "오늘 매출",
+    "kpiOrdersToday": "오늘 수주",
+    "kpiInTransit": "운송중",
+    "kpiLowStock": "재고 경고",
+    "unitOrders": "건",
+    "unitDeliveries": "건",
+    "unitSku": "SKU",
+    "shipmentSampleTitle": "출고 진행 샘플",
+    "tableSkeletonTitle": "테이블 스켈레톤 샘플",
+    "badgeShowcaseTitle": "상태 뱃지 색상 샘플"
+  },
+  "Orders": {
+    "subtitleCount": "총 {count}건 · 최근 30일",
+    "newOrder": "수주 등록",
+    "filters": {
+      "ALL": "전체",
+      "PLACED": "수주",
+      "CONFIRMED": "결제완료",
+      "SHIPPED": "출고됨",
+      "COMPLETED": "완료"
+    },
+    "searchPlaceholder": "주문번호·고객명 검색",
+    "columns": {
+      "id": "ID",
+      "customer": "고객",
+      "items": "품목",
+      "amount": "금액",
+      "placedAt": "수주일시",
+      "status": "상태"
+    },
+    "andMore": "외 {count}",
+    "pay": "결제",
+    "empty": "조건에 맞는 수주가 없습니다",
+    "panel": {
+      "title": "수주 #{id}",
+      "summary": "기본 정보",
+      "lineItems": "품목",
+      "linkedShipment": "연결된 출고",
+      "kvCustomer": "고객",
+      "kvPlacedAt": "수주일시",
+      "kvTotal": "총액",
+      "kvPayment": "결제",
+      "colSku": "품목",
+      "colQty": "수량",
+      "colUnit": "단가",
+      "colSubtotal": "소계",
+      "confirmPayment": "결제 확정"
+    },
+    "toast": {
+      "paymentDone": "결제 완료 · 출고 지시 자동 생성됨"
+    }
+  },
+  "Shipments": {
+    "subtitleCount": "총 {count}건 · 진행중 {active}건",
+    "filters": {
+      "ALL": "전체",
+      "PREPARING": "출고준비",
+      "DISPATCHED": "배차완료",
+      "COMPLETED": "완료"
+    },
+    "searchPlaceholder": "출고번호·고객·기사 검색",
+    "columns": {
+      "id": "출고번호",
+      "customer": "고객",
+      "warehouse": "창고",
+      "items": "품목/중량",
+      "dispatchedAt": "배차일시",
+      "tracking": "송장",
+      "status": "상태"
+    },
+    "weightUnit": "kg",
+    "itemsUnit": "개",
+    "dispatch": "배차/출고",
+    "empty": "조건에 맞는 출고가 없습니다",
+    "panel": {
+      "title": "출고 SHP-{id}",
+      "summary": "출고 정보",
+      "linkedOrder": "연결된 수주",
+      "linkedDelivery": "배송 추적",
+      "kvWarehouse": "창고",
+      "kvItems": "품목 수",
+      "kvWeight": "중량",
+      "kvDriver": "배송 기사",
+      "kvTracking": "송장번호",
+      "kvPreparedAt": "준비 시작",
+      "kvDispatchedAt": "배차 시각",
+      "kvDeliveredAt": "배송 완료",
+      "noDriver": "(미배정)",
+      "confirmDispatch": "배차/출고 확정"
+    },
+    "toast": {
+      "dispatched": "출고 발송 · 배송 추적 시작"
+    }
+  },
+  "Deliveries": {
+    "subtitleCount": "총 {count}건 · 운송중 {inTransit}건",
+    "filters": {
+      "ALL": "전체",
+      "ASSIGNED": "배정",
+      "IN_TRANSIT": "운송중",
+      "DELIVERED": "배송완료",
+      "RETURNED": "반송"
+    },
+    "searchPlaceholder": "배송번호·고객·지역 검색",
+    "columns": {
+      "id": "배송번호",
+      "shipment": "출고",
+      "customer": "고객",
+      "courier": "운송사",
+      "region": "지역",
+      "eta": "도착 예정",
+      "status": "상태"
+    },
+    "complete": "완료",
+    "empty": "조건에 맞는 배송이 없습니다",
+    "panel": {
+      "title": "배송 DLV-{id}",
+      "summary": "배송 정보",
+      "linkedShipment": "연결된 출고",
+      "kvCourier": "운송사",
+      "kvDriver": "기사",
+      "kvRegion": "지역",
+      "kvEta": "도착 예정",
+      "kvDeliveredAt": "배송 완료",
+      "kvShipment": "출고번호",
+      "confirmComplete": "배송 완료 처리"
+    },
+    "toast": {
+      "completed": "배송 완료 처리됨"
+    }
+  },
+  "Stocks": {
+    "subtitleCount": "총 {count}개 SKU · 위험 {critical}건",
+    "filters": {
+      "ALL": "전체",
+      "critical": "위험",
+      "warning": "주의",
+      "normal": "정상"
+    },
+    "searchPlaceholder": "상품·SKU·창고 검색",
+    "columns": {
+      "product": "상품",
+      "warehouse": "창고",
+      "total": "총 재고",
+      "reserved": "예약",
+      "available": "가용",
+      "severity": "안전도"
+    },
+    "severityBadge": {
+      "critical": "위험",
+      "warning": "주의",
+      "normal": "정상"
+    },
+    "empty": "조건에 맞는 재고가 없습니다",
+    "tabs": {
+      "inventory": "재고 현황",
+      "products": "상품",
+      "warehouses": "창고",
+      "movements": "이동 이력"
+    },
+    "products": {
+      "col": {
+        "sku": "SKU",
+        "name": "상품명",
+        "seller": "판매자",
+        "price": "단가"
+      }
+    },
+    "warehouses": {
+      "col": {
+        "name": "창고명",
+        "location": "위치",
+        "type": "유형",
+        "skuCount": "SKU 수",
+        "totalUnits": "총 재고",
+        "reservedUnits": "예약"
+      },
+      "type": {
+        "MAIN": "본사창고",
+        "SUB": "거점창고"
+      }
+    },
+    "movements": {
+      "col": {
+        "occurredAt": "일시",
+        "product": "상품",
+        "warehouse": "창고",
+        "type": "유형",
+        "quantity": "수량",
+        "reference": "참조",
+        "note": "메모"
+      },
+      "type": {
+        "IN": "입고",
+        "OUT": "출고",
+        "RESERVE": "예약",
+        "RELEASE": "예약해제",
+        "ADJUST": "조정",
+        "TRANSFER": "이동"
+      }
+    }
+  },
+  "Purchase": {
+    "subtitleCount": "총 {count}건 · 진행중 {ongoing}건",
+    "filters": {
+      "ALL": "전체",
+      "ISSUED": "발주",
+      "PARTIAL": "부분입고",
+      "COMPLETED": "완료",
+      "CANCELLED": "취소"
+    },
+    "searchPlaceholder": "발주번호·공급자·상품 검색",
+    "columns": {
+      "id": "발주번호",
+      "supplier": "공급자",
+      "product": "상품",
+      "received": "입고/발주",
+      "unitPrice": "단가",
+      "total": "총액",
+      "issuedAt": "발주일",
+      "status": "상태"
+    },
+    "receive": "입고 처리",
+    "newPo": "발주 등록",
+    "empty": "조건에 맞는 발주가 없습니다",
+    "panel": {
+      "title": "발주 PO-{id}",
+      "summary": "발주 정보",
+      "stockEffect": "재고 영향",
+      "kvSupplier": "공급자",
+      "kvProduct": "상품",
+      "kvSku": "SKU",
+      "kvQuantity": "발주 수량",
+      "kvReceived": "입고 수량",
+      "kvRemaining": "잔여",
+      "kvUnitPrice": "단가",
+      "kvTotal": "총액",
+      "kvIssuedAt": "발주일",
+      "kvWarehouse": "기본 입고 창고",
+      "confirmReceive": "전체 입고 확정"
+    },
+    "toast": {
+      "received": "전체 입고 처리됨 · 재고 자동 갱신"
+    }
+  },
+  "SellerNav": {
+    "main": "메인",
+    "products": "상품",
+    "operations": "운영",
+    "dashboard": "대시보드",
+    "myProducts": "내 상품",
+    "myOrders": "내 주문",
+    "myShipments": "내 출고",
+    "mySettlement": "내 정산"
+  },
+  "Seller": {
+    "modeBadge": "판매자 모드",
+    "switcher": "활성 판매자",
+    "dashboard": {
+      "title": "판매자 대시보드",
+      "subtitle": "{name}의 상품·주문·출고 현황",
+      "kpiMyProducts": "내 상품",
+      "kpiOpenOrders": "미출고 주문",
+      "kpiActiveShipments": "운송중 출고",
+      "kpiEstRevenue": "오늘 추정 매출",
+      "unitSku": "SKU",
+      "unitOrders": "건",
+      "unitShipments": "건",
+      "activeShipmentsTitle": "내 상품이 포함된 진행중 출고",
+      "noActiveShipments": "현재 운송중인 상품이 없습니다",
+      "fromTo": "{from} → {region}"
+    },
+    "products": {
+      "title": "내 상품",
+      "subtitle": "{count}개 SKU · 위험 {critical}건",
+      "columns": {
+        "product": "상품",
+        "warehouseStocks": "창고별 재고",
+        "available": "총 가용",
+        "shippingTo": "운송중 위치",
+        "severity": "안전도"
+      },
+      "noShipping": "운송중 없음",
+      "shippingCount": "{count}건 운송중",
+      "stockChip": "{warehouse}: {available}/{total}"
+    },
+    "orders": {
+      "title": "내 주문",
+      "subtitle": "내 상품을 포함한 주문 {count}건",
+      "columns": {
+        "id": "주문",
+        "customer": "고객",
+        "myItems": "내 품목",
+        "myAmount": "내 금액",
+        "placedAt": "수주일시",
+        "status": "상태"
+      },
+      "myAmountHint": "내 상품 라인의 합계",
+      "empty": "내 상품이 포함된 주문이 없습니다"
+    },
+    "shipments": {
+      "title": "내 출고",
+      "subtitle": "내 상품을 포함한 출고 {count}건",
+      "columns": {
+        "id": "출고번호",
+        "customer": "고객",
+        "myItems": "내 품목",
+        "warehouse": "출발",
+        "region": "도착",
+        "status": "상태"
+      },
+      "empty": "내 상품이 포함된 출고가 없습니다"
+    },
+    "settlement": {
+      "title": "내 정산",
+      "subtitle": "기간별 추정 정산액",
+      "kpiGrossRevenue": "총 매출",
+      "kpiFee": "플랫폼 수수료 (5%)",
+      "kpiNetPayout": "순 정산액",
+      "thisMonthCard": "이번 달 (추정)",
+      "byProductTitle": "상품별 매출",
+      "byProductColumns": {
+        "product": "상품",
+        "qty": "판매 수량",
+        "revenue": "매출"
+      },
+      "noData": "현재 기간에 완료된 주문이 없습니다"
+    }
+  },
+  "Hr": {
+    "tabs": {
+      "employees": "직원",
+      "attendance": "근태",
+      "leaves": "연차",
+      "payroll": "급여"
+    },
+    "employees": {
+      "col": {
+        "no": "사번",
+        "name": "이름",
+        "department": "부서",
+        "hiredAt": "입사일",
+        "baseSalary": "기본급",
+        "status": "상태"
+      },
+      "status": {
+        "ACTIVE": "재직",
+        "ON_LEAVE": "휴직",
+        "TERMINATED": "퇴사"
+      }
+    },
+    "attendance": {
+      "col": {
+        "date": "일자",
+        "employee": "직원",
+        "department": "부서",
+        "checkIn": "출근",
+        "checkOut": "퇴근",
+        "status": "상태"
+      },
+      "status": {
+        "NORMAL": "정상",
+        "LATE": "지각",
+        "ABSENT": "결근",
+        "EARLY_LEAVE": "조퇴"
+      }
+    },
+    "leaves": {
+      "col": {
+        "employee": "신청자",
+        "period": "기간",
+        "reason": "사유",
+        "requestedAt": "신청일시",
+        "status": "상태"
+      },
+      "status": {
+        "PENDING": "대기",
+        "APPROVED": "승인",
+        "REJECTED": "반려"
+      }
+    },
+    "payroll": {
+      "col": {
+        "period": "기간",
+        "employee": "직원",
+        "baseSalary": "기본급",
+        "allowance": "수당",
+        "insurance": "공제",
+        "netSalary": "실수령액",
+        "paid": "지급"
+      },
+      "paid": "지급완료",
+      "unpaid": "미지급"
+    }
+  },
+  "Crm": {
+    "tabs": {
+      "customers": "고객",
+      "consultations": "상담",
+      "claims": "클레임",
+      "points": "포인트",
+      "coupons": "쿠폰"
+    },
+    "customers": {
+      "col": {
+        "code": "코드",
+        "name": "이름",
+        "grade": "등급",
+        "points": "보유 포인트"
+      }
+    },
+    "consultations": {
+      "col": {
+        "occurredAt": "일시",
+        "customer": "고객",
+        "channel": "채널",
+        "summary": "내용 요약",
+        "agent": "담당자",
+        "status": "상태"
+      },
+      "channel": {
+        "PHONE": "전화",
+        "EMAIL": "이메일",
+        "CHAT": "채팅",
+        "VISIT": "방문"
+      },
+      "status": {
+        "OPEN": "진행중",
+        "RESOLVED": "완료"
+      }
+    },
+    "claims": {
+      "col": {
+        "filedAt": "접수일시",
+        "customer": "고객",
+        "type": "유형",
+        "description": "내용",
+        "resolvedAt": "해결일시",
+        "status": "상태"
+      },
+      "type": {
+        "SHIPPING": "배송",
+        "PRODUCT": "상품",
+        "REFUND": "환불",
+        "OTHER": "기타"
+      },
+      "status": {
+        "OPEN": "접수",
+        "IN_PROGRESS": "처리중",
+        "RESOLVED": "해결",
+        "CLOSED": "종료"
+      }
+    },
+    "points": {
+      "col": {
+        "earnedAt": "적립일시",
+        "customer": "고객",
+        "amount": "금액",
+        "source": "출처",
+        "expireOn": "만료일",
+        "status": "상태"
+      },
+      "status": {
+        "ACTIVE": "유효",
+        "USED": "사용",
+        "EXPIRED": "만료"
+      }
+    },
+    "coupons": {
+      "col": {
+        "code": "쿠폰 코드",
+        "target": "대상",
+        "discount": "할인",
+        "expireOn": "만료일",
+        "status": "상태"
+      },
+      "publicTarget": "전체 (공용)",
+      "status": {
+        "ISSUED": "발급",
+        "USED": "사용",
+        "EXPIRED": "만료"
+      }
+    }
+  },
+  "Settlement": {
+    "tabs": {
+      "periods": "기간",
+      "ledgers": "전표",
+      "sellers": "판매자 정산",
+      "aging": "미수금",
+      "batch": "배치 이력"
+    },
+    "periods": {
+      "col": {
+        "id": "기간",
+        "range": "범위",
+        "closedAt": "마감일시",
+        "settledAt": "정산일시",
+        "status": "상태"
+      },
+      "status": {
+        "OPEN": "열림",
+        "CLOSED": "마감",
+        "SETTLED": "정산완료"
+      }
+    },
+    "ledgers": {
+      "col": {
+        "occurredAt": "일시",
+        "period": "기간",
+        "type": "유형",
+        "description": "내용",
+        "debit": "차변",
+        "credit": "대변",
+        "reversed": "반대"
+      },
+      "type": {
+        "SALES": "매출",
+        "REFUND": "환불",
+        "PURCHASE": "매입",
+        "FEE": "수수료",
+        "ADJUSTMENT": "조정",
+        "REVERSAL": "반대"
+      }
+    },
+    "sellers": {
+      "col": {
+        "id": "정산번호",
+        "seller": "판매자",
+        "period": "기간",
+        "gross": "총 매출",
+        "refund": "환불",
+        "fee": "수수료",
+        "net": "순 정산액",
+        "paidAt": "지급일시",
+        "status": "상태"
+      },
+      "status": {
+        "CALCULATED": "계산완료",
+        "PAID": "지급완료"
+      }
+    },
+    "aging": {
+      "kpi": {
+        "b0": "0-30일",
+        "b1": "31-60일",
+        "b2": "61-90일",
+        "b3": "90일+"
+      },
+      "col": {
+        "customer": "고객",
+        "total": "총 미수금",
+        "b0": "0-30일",
+        "b1": "31-60일",
+        "b2": "61-90일",
+        "b3": "90일+",
+        "asOf": "기준일"
+      }
+    },
+    "batch": {
+      "col": {
+        "id": "잡 번호",
+        "jobName": "잡 이름",
+        "parameters": "파라미터",
+        "startedAt": "시작",
+        "duration": "소요",
+        "read": "읽음",
+        "write": "쓰기",
+        "skip": "건너뜀",
+        "status": "상태"
+      },
+      "status": {
+        "COMPLETED": "완료",
+        "FAILED": "실패",
+        "RUNNING": "실행중"
+      }
+    }
+  },
+  "Pages": {
+    "dashboard": {
+      "title": "물류 대시보드",
+      "subtitle": "오늘의 수주·출고·배송 현황을 한눈에"
+    },
+    "quotes":        { "title": "견적",    "subtitle": "거래처별 견적과 수주 전환" },
+    "orders":        { "title": "수주",    "subtitle": "주문 접수와 진행 관리" },
+    "payments":      { "title": "결제",    "subtitle": "결제 상태와 환불 관리" },
+    "crm":           { "title": "고객",    "subtitle": "고객 정보와 클레임 관리" },
+    "shipments":     { "title": "출고",    "subtitle": "창고별 출고 준비와 배차" },
+    "deliveries":    { "title": "배송 추적", "subtitle": "운송중인 배송 실시간 현황" },
+    "stocks":        { "title": "재고",    "subtitle": "창고/SKU 별 재고 현황" },
+    "purchase":      { "title": "발주",    "subtitle": "공급자 발주와 입고 관리" },
+    "suppliers":     { "title": "공급자",  "subtitle": "공급자 마스터와 거래 이력" },
+    "production":    { "title": "생산",    "subtitle": "작업지시서와 공정 진행" },
+    "settlement":    { "title": "정산",    "subtitle": "기간별 매출/매입 정산" },
+    "approvals":     { "title": "전자결재", "subtitle": "결재 진행 현황과 이력" },
+    "notifications": { "title": "알림",    "subtitle": "이벤트 알림과 발송 채널" },
+    "reports":       { "title": "리포트",  "subtitle": "주요 지표와 정기 리포트" },
+    "hr":            { "title": "인사",    "subtitle": "조직과 권한 관리" },
+    "admin":         { "title": "관리자",   "subtitle": "사용자/역할/권한/감사 로그" }
+  },
+  "Login": {
+    "title": "로그인",
+    "subtitle": "사용자명과 비밀번호를 입력하세요",
+    "usernameLabel": "사용자명",
+    "usernamePlaceholder": "예: admin",
+    "passwordLabel": "비밀번호",
+    "passwordPlaceholder": "비밀번호 입력",
+    "signIn": "로그인",
+    "signingIn": "로그인 중…",
+    "errorEmptyUsername": "사용자명을 입력하세요",
+    "toastLoggedIn": "{user}님 환영합니다",
+    "skipToDashboard": "데모 대시보드로 바로가기",
+    "mockHint": "Mock 환경 — 사용자명만 있으면 로그인됩니다."
+  },
+  "Admin": {
+    "tabs": {
+      "users": "사용자",
+      "roles": "역할",
+      "permissions": "권한",
+      "audit": "감사 로그"
+    },
+    "users": {
+      "col": {
+        "id": "ID",
+        "username": "사용자명",
+        "employee": "연결 직원",
+        "roles": "역할",
+        "lastLoginAt": "최근 접속",
+        "status": "상태"
+      },
+      "status": {
+        "ACTIVE": "활성",
+        "LOCKED": "잠김",
+        "TERMINATED": "퇴출"
+      }
+    },
+    "roles": {
+      "col": {
+        "code": "코드",
+        "name": "이름",
+        "description": "설명",
+        "permissions": "권한"
+      }
+    },
+    "permissions": {
+      "col": {
+        "code": "코드",
+        "name": "이름",
+        "description": "설명",
+        "assignedRoles": "할당 역할"
+      },
+      "noRoles": "할당된 역할 없음"
+    },
+    "audit": {
+      "col": {
+        "occurredAt": "일시",
+        "user": "사용자",
+        "action": "액션",
+        "resource": "자원",
+        "ip": "IP"
+      }
+    }
+  },
+  "Quotes": {
+    "subtitleCount": "총 {count}건 · 진행중 {active}건",
+    "col": {
+      "id": "견적번호",
+      "customer": "고객",
+      "items": "품목",
+      "total": "금액",
+      "validUntil": "유효기간",
+      "status": "상태"
+    },
+    "status": {
+      "ACTIVE": "진행",
+      "ACCEPTED": "수락",
+      "EXPIRED": "만료",
+      "REJECTED": "거절"
+    }
+  },
+  "Payments": {
+    "subtitleCount": "결제 {count}건 · 환불 {refunds}건 · 대기 {pending}건",
+    "refunds": "환불 이력",
+    "col": {
+      "id": "결제번호",
+      "order": "주문",
+      "method": "결제수단",
+      "amount": "금액",
+      "processedAt": "처리일시",
+      "pgRef": "PG 참조",
+      "status": "상태"
+    },
+    "method": {
+      "CARD": "카드",
+      "BANK": "계좌",
+      "VIRTUAL_ACCOUNT": "가상계좌"
+    },
+    "status": {
+      "PENDING": "대기",
+      "COMPLETED": "완료",
+      "FAILED": "실패",
+      "REFUNDED": "환불"
+    },
+    "refundCol": {
+      "id": "환불번호",
+      "payment": "원결제",
+      "amount": "환불 금액",
+      "reason": "사유",
+      "processedAt": "처리일시"
+    }
+  },
+  "Approvals": {
+    "subtitleCount": "총 {count}건 · 진행중 {inProgress}건",
+    "col": {
+      "id": "문서번호",
+      "title": "제목",
+      "type": "유형",
+      "drafter": "기안자",
+      "amount": "금액",
+      "progress": "진행",
+      "draftedAt": "기안일시",
+      "status": "상태"
+    },
+    "type": {
+      "EXPENSE": "비용",
+      "PROCUREMENT": "구매",
+      "LEAVE": "휴가",
+      "OTHER": "기타"
+    },
+    "status": {
+      "IN_PROGRESS": "진행중",
+      "APPROVED": "승인",
+      "REJECTED": "반려",
+      "CANCELLED": "취소"
+    }
+  },
+  "Notifications": {
+    "subtitleCount": "총 {count}건 · 실패 {failed}건",
+    "col": {
+      "sentAt": "발송일시",
+      "recipient": "수신자",
+      "channel": "채널",
+      "title": "제목",
+      "body": "내용",
+      "status": "상태"
+    },
+    "channel": {
+      "EMAIL": "이메일",
+      "SMS": "SMS",
+      "PUSH": "푸시",
+      "SYSTEM": "시스템"
+    },
+    "status": {
+      "PENDING": "대기",
+      "SENT": "발송",
+      "FAILED": "실패"
+    }
+  },
+  "Reports": {
+    "subtitleCount": "총 {count}개 스냅샷",
+    "generatedAt": "생성일시",
+    "type": {
+      "DAILY_SALES": "일별 매출",
+      "WEEKLY_SUMMARY": "주간 요약",
+      "MONTHLY_PNL": "월별 손익",
+      "SELLER_PAYOUT": "판매자 정산",
+      "AGING": "미수금"
+    }
+  },
+  "Production": {
+    "subtitleCount": "총 {count}건 · 진행중 {inProgress}건",
+    "col": {
+      "id": "작업지시",
+      "product": "상품",
+      "planned": "계획",
+      "produced": "생산",
+      "defective": "불량",
+      "progress": "진행률",
+      "issuedAt": "발행일시",
+      "status": "상태"
+    },
+    "status": {
+      "PLANNED": "예정",
+      "IN_PROGRESS": "진행중",
+      "COMPLETED": "완료",
+      "CANCELLED": "취소"
+    }
+  },
+  "Suppliers": {
+    "subtitleCount": "총 {count}곳 · 활성 {active}곳",
+    "col": {
+      "code": "코드",
+      "name": "공급자명",
+      "category": "카테고리",
+      "contact": "연락처",
+      "email": "이메일",
+      "rating": "평점",
+      "status": "상태"
+    },
+    "status": {
+      "ACTIVE": "활성",
+      "INACTIVE": "휴면"
+    }
+  },
+  "System": {
+    "notFound": {
+      "title": "페이지를 찾을 수 없습니다",
+      "subtitle": "요청하신 주소가 존재하지 않거나 이동되었습니다.",
+      "goHome": "대시보드로 이동"
+    },
+    "error": {
+      "title": "예기치 못한 오류",
+      "subtitle": "잠시 후 다시 시도하거나 대시보드로 돌아가 주세요.",
+      "digest": "에러 ID",
+      "retry": "다시 시도",
+      "goHome": "대시보드로"
+    }
+  },
+  "Dashboard": {
+    "kpi": {
+      "todaySales": "오늘 매출",
+      "ordersToday": "오늘 수주",
+      "inTransit": "운송중",
+      "lowStock": "재고 위험"
+    },
+    "unit": {
+      "orders": "건",
+      "deliveries": "건",
+      "sku": "SKU"
+    },
+    "section": {
+      "activeShipments": "진행중 출고",
+      "recentOrders": "최근 주문",
+      "criticalStocks": "재고 위험 SKU",
+      "openApprovals": "결재 대기",
+      "recentNotifications": "최근 알림"
+    },
+    "viewAll": "전체 보기 →",
+    "noActiveShipments": "진행중인 출고가 없습니다",
+    "noCriticalStocks": "위험 SKU가 없습니다",
+    "noOpenApprovals": "대기중 결재가 없습니다",
+    "available": "가용",
+    "step": "{current}/{total}"
+  }
+}

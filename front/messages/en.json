@@ -1,0 +1,923 @@
+{
+  "Brand": {
+    "name": "Logiform",
+    "subtitle": "Logistics ERP"
+  },
+  "Nav": {
+    "main": "Main",
+    "sales": "Sales",
+    "logistics": "Logistics",
+    "supply": "Supply",
+    "finance": "Finance",
+    "operations": "Operations",
+    "admin": "Admin",
+    "dashboard": "Dashboard",
+    "quotes": "Quotes",
+    "orders": "Sales Orders",
+    "payments": "Payments",
+    "crm": "Customers",
+    "shipments": "Shipments",
+    "deliveries": "Deliveries",
+    "stocks": "Stocks",
+    "purchase": "Purchase Orders",
+    "suppliers": "Suppliers",
+    "production": "Production",
+    "settlement": "Settlement",
+    "approvals": "Approvals",
+    "notifications": "Notifications",
+    "reports": "Reports",
+    "hr": "HR"
+  },
+  "Topbar": {
+    "searchPlaceholder": "Search anything across orders, customers, items, invoices…",
+    "openNotifications": "Open notifications",
+    "openSettings": "Open settings",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System",
+    "languageToggle": "Toggle language",
+    "switchToSeller": "Seller mode",
+    "switchToAdmin": "Admin mode"
+  },
+  "User": {
+    "name": "Jun Seo",
+    "role": "Logistics Lead"
+  },
+  "Common": {
+    "refresh": "Refresh",
+    "export": "Export",
+    "create": "Create",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "loading": "Loading…",
+    "empty": "No data",
+    "comingSoon": "Coming soon",
+    "placeholderHint": "This screen will be built in a later step.",
+    "vsYesterday": "vs yesterday",
+    "vsAvg": "vs avg",
+    "vsLastWeek": "vs last week"
+  },
+  "Status": {
+    "PLACED": "Placed",
+    "CONFIRMED": "Confirmed",
+    "SHIPPED": "Shipped",
+    "COMPLETED": "Completed",
+    "CANCELLED": "Cancelled",
+    "REFUNDED": "Refunded",
+    "PREPARING": "Preparing",
+    "DISPATCHED": "Dispatched",
+    "ASSIGNED": "Assigned",
+    "IN_TRANSIT": "In transit",
+    "DELIVERED": "Delivered",
+    "RETURNED": "Returned",
+    "ISSUED": "Issued",
+    "PARTIAL": "Partial",
+    "PENDING": "Pending"
+  },
+  "Demo": {
+    "kpiTodaySales": "Today's Sales",
+    "kpiOrdersToday": "Orders Today",
+    "kpiInTransit": "In Transit",
+    "kpiLowStock": "Low Stock",
+    "unitOrders": "orders",
+    "unitDeliveries": "deliveries",
+    "unitSku": "SKU",
+    "shipmentSampleTitle": "Shipment progress (sample)",
+    "tableSkeletonTitle": "Table skeleton (sample)",
+    "badgeShowcaseTitle": "Status badge tones (sample)"
+  },
+  "Orders": {
+    "subtitleCount": "{count} orders · Last 30 days",
+    "newOrder": "New order",
+    "filters": {
+      "ALL": "All",
+      "PLACED": "Placed",
+      "CONFIRMED": "Confirmed",
+      "SHIPPED": "Shipped",
+      "COMPLETED": "Completed"
+    },
+    "searchPlaceholder": "Search by order # or customer…",
+    "columns": {
+      "id": "ID",
+      "customer": "Customer",
+      "items": "Items",
+      "amount": "Amount",
+      "placedAt": "Placed at",
+      "status": "Status"
+    },
+    "andMore": "+{count} more",
+    "pay": "Pay",
+    "empty": "No matching orders",
+    "panel": {
+      "title": "Order #{id}",
+      "summary": "Summary",
+      "lineItems": "Line items",
+      "linkedShipment": "Linked shipment",
+      "kvCustomer": "Customer",
+      "kvPlacedAt": "Placed at",
+      "kvTotal": "Total",
+      "kvPayment": "Payment",
+      "colSku": "SKU",
+      "colQty": "Qty",
+      "colUnit": "Unit",
+      "colSubtotal": "Subtotal",
+      "confirmPayment": "Confirm payment"
+    },
+    "toast": {
+      "paymentDone": "Payment completed · Shipment created"
+    }
+  },
+  "Shipments": {
+    "subtitleCount": "{count} shipments · {active} active",
+    "filters": {
+      "ALL": "All",
+      "PREPARING": "Preparing",
+      "DISPATCHED": "Dispatched",
+      "COMPLETED": "Completed"
+    },
+    "searchPlaceholder": "Search by shipment #, customer or driver…",
+    "columns": {
+      "id": "Shipment",
+      "customer": "Customer",
+      "warehouse": "Warehouse",
+      "items": "Items / Weight",
+      "dispatchedAt": "Dispatched at",
+      "tracking": "Tracking",
+      "status": "Status"
+    },
+    "weightUnit": "kg",
+    "itemsUnit": "pcs",
+    "dispatch": "Dispatch",
+    "empty": "No matching shipments",
+    "panel": {
+      "title": "Shipment SHP-{id}",
+      "summary": "Shipment info",
+      "linkedOrder": "Linked order",
+      "linkedDelivery": "Delivery tracking",
+      "kvWarehouse": "Warehouse",
+      "kvItems": "Item count",
+      "kvWeight": "Weight",
+      "kvDriver": "Driver",
+      "kvTracking": "Tracking #",
+      "kvPreparedAt": "Prepared at",
+      "kvDispatchedAt": "Dispatched at",
+      "kvDeliveredAt": "Delivered at",
+      "noDriver": "(unassigned)",
+      "confirmDispatch": "Dispatch shipment"
+    },
+    "toast": {
+      "dispatched": "Shipment dispatched · Tracking started"
+    }
+  },
+  "Deliveries": {
+    "subtitleCount": "{count} deliveries · {inTransit} in transit",
+    "filters": {
+      "ALL": "All",
+      "ASSIGNED": "Assigned",
+      "IN_TRANSIT": "In transit",
+      "DELIVERED": "Delivered",
+      "RETURNED": "Returned"
+    },
+    "searchPlaceholder": "Search by delivery #, customer or region…",
+    "columns": {
+      "id": "Delivery",
+      "shipment": "Shipment",
+      "customer": "Customer",
+      "courier": "Courier",
+      "region": "Region",
+      "eta": "ETA",
+      "status": "Status"
+    },
+    "complete": "Complete",
+    "empty": "No matching deliveries",
+    "panel": {
+      "title": "Delivery DLV-{id}",
+      "summary": "Delivery info",
+      "linkedShipment": "Linked shipment",
+      "kvCourier": "Courier",
+      "kvDriver": "Driver",
+      "kvRegion": "Region",
+      "kvEta": "ETA",
+      "kvDeliveredAt": "Delivered at",
+      "kvShipment": "Shipment #",
+      "confirmComplete": "Mark as delivered"
+    },
+    "toast": {
+      "completed": "Delivery marked as completed"
+    }
+  },
+  "Stocks": {
+    "subtitleCount": "{count} SKUs · {critical} critical",
+    "filters": {
+      "ALL": "All",
+      "critical": "Critical",
+      "warning": "Warning",
+      "normal": "Normal"
+    },
+    "searchPlaceholder": "Search by product, SKU, or warehouse…",
+    "columns": {
+      "product": "Product",
+      "warehouse": "Warehouse",
+      "total": "Total",
+      "reserved": "Reserved",
+      "available": "Available",
+      "severity": "Severity"
+    },
+    "severityBadge": {
+      "critical": "Critical",
+      "warning": "Warning",
+      "normal": "Normal"
+    },
+    "empty": "No matching stocks",
+    "tabs": {
+      "inventory": "Inventory",
+      "products": "Products",
+      "warehouses": "Warehouses",
+      "movements": "Movements"
+    },
+    "products": {
+      "col": {
+        "sku": "SKU",
+        "name": "Name",
+        "seller": "Seller",
+        "price": "Unit price"
+      }
+    },
+    "warehouses": {
+      "col": {
+        "name": "Warehouse",
+        "location": "Location",
+        "type": "Type",
+        "skuCount": "SKU count",
+        "totalUnits": "Total units",
+        "reservedUnits": "Reserved"
+      },
+      "type": {
+        "MAIN": "Main",
+        "SUB": "Sub"
+      }
+    },
+    "movements": {
+      "col": {
+        "occurredAt": "When",
+        "product": "Product",
+        "warehouse": "Warehouse",
+        "type": "Type",
+        "quantity": "Quantity",
+        "reference": "Reference",
+        "note": "Note"
+      },
+      "type": {
+        "IN": "In",
+        "OUT": "Out",
+        "RESERVE": "Reserve",
+        "RELEASE": "Release",
+        "ADJUST": "Adjust",
+        "TRANSFER": "Transfer"
+      }
+    }
+  },
+  "Purchase": {
+    "subtitleCount": "{count} POs · {ongoing} ongoing",
+    "filters": {
+      "ALL": "All",
+      "ISSUED": "Issued",
+      "PARTIAL": "Partial",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    },
+    "searchPlaceholder": "Search by PO #, supplier, or product…",
+    "columns": {
+      "id": "PO #",
+      "supplier": "Supplier",
+      "product": "Product",
+      "received": "Received / Ordered",
+      "unitPrice": "Unit",
+      "total": "Total",
+      "issuedAt": "Issued at",
+      "status": "Status"
+    },
+    "receive": "Receive",
+    "newPo": "New PO",
+    "empty": "No matching purchase orders",
+    "panel": {
+      "title": "Purchase PO-{id}",
+      "summary": "Purchase info",
+      "stockEffect": "Stock impact",
+      "kvSupplier": "Supplier",
+      "kvProduct": "Product",
+      "kvSku": "SKU",
+      "kvQuantity": "Ordered qty",
+      "kvReceived": "Received qty",
+      "kvRemaining": "Remaining",
+      "kvUnitPrice": "Unit price",
+      "kvTotal": "Total",
+      "kvIssuedAt": "Issued at",
+      "kvWarehouse": "Default receiving warehouse",
+      "confirmReceive": "Receive in full"
+    },
+    "toast": {
+      "received": "Received in full · Stock updated"
+    }
+  },
+  "SellerNav": {
+    "main": "Main",
+    "products": "Products",
+    "operations": "Operations",
+    "dashboard": "Dashboard",
+    "myProducts": "My Products",
+    "myOrders": "My Orders",
+    "myShipments": "My Shipments",
+    "mySettlement": "My Settlement"
+  },
+  "Seller": {
+    "modeBadge": "Seller Mode",
+    "switcher": "Active seller",
+    "dashboard": {
+      "title": "Seller Dashboard",
+      "subtitle": "{name}'s products, orders and shipments",
+      "kpiMyProducts": "My Products",
+      "kpiOpenOrders": "Open Orders",
+      "kpiActiveShipments": "Active Shipments",
+      "kpiEstRevenue": "Estimated Revenue (today)",
+      "unitSku": "SKU",
+      "unitOrders": "orders",
+      "unitShipments": "shipments",
+      "activeShipmentsTitle": "Active shipments containing my products",
+      "noActiveShipments": "No active shipments",
+      "fromTo": "{from} → {region}"
+    },
+    "products": {
+      "title": "My Products",
+      "subtitle": "{count} SKUs · {critical} critical",
+      "columns": {
+        "product": "Product",
+        "warehouseStocks": "Stock by warehouse",
+        "available": "Total available",
+        "shippingTo": "Shipping locations",
+        "severity": "Severity"
+      },
+      "noShipping": "Not shipping",
+      "shippingCount": "{count} in transit",
+      "stockChip": "{warehouse}: {available}/{total}"
+    },
+    "orders": {
+      "title": "My Orders",
+      "subtitle": "{count} orders containing my products",
+      "columns": {
+        "id": "Order",
+        "customer": "Customer",
+        "myItems": "My items",
+        "myAmount": "My amount",
+        "placedAt": "Placed at",
+        "status": "Status"
+      },
+      "myAmountHint": "Sum of my product lines",
+      "empty": "No orders contain my products"
+    },
+    "shipments": {
+      "title": "My Shipments",
+      "subtitle": "{count} shipments containing my products",
+      "columns": {
+        "id": "Shipment",
+        "customer": "Customer",
+        "myItems": "My items",
+        "warehouse": "From",
+        "region": "To",
+        "status": "Status"
+      },
+      "empty": "No shipments contain my products"
+    },
+    "settlement": {
+      "title": "My Settlement",
+      "subtitle": "Estimated period payouts",
+      "kpiGrossRevenue": "Gross Revenue",
+      "kpiFee": "Platform Fee (5%)",
+      "kpiNetPayout": "Net Payout",
+      "thisMonthCard": "This month (estimated)",
+      "byProductTitle": "Revenue by product",
+      "byProductColumns": {
+        "product": "Product",
+        "qty": "Qty sold",
+        "revenue": "Revenue"
+      },
+      "noData": "No completed orders yet for the current period"
+    }
+  },
+  "Hr": {
+    "tabs": {
+      "employees": "Employees",
+      "attendance": "Attendance",
+      "leaves": "Leaves",
+      "payroll": "Payroll"
+    },
+    "employees": {
+      "col": {
+        "no": "Emp #",
+        "name": "Name",
+        "department": "Department",
+        "hiredAt": "Hired at",
+        "baseSalary": "Base salary",
+        "status": "Status"
+      },
+      "status": {
+        "ACTIVE": "Active",
+        "ON_LEAVE": "On leave",
+        "TERMINATED": "Terminated"
+      }
+    },
+    "attendance": {
+      "col": {
+        "date": "Date",
+        "employee": "Employee",
+        "department": "Department",
+        "checkIn": "Check in",
+        "checkOut": "Check out",
+        "status": "Status"
+      },
+      "status": {
+        "NORMAL": "Normal",
+        "LATE": "Late",
+        "ABSENT": "Absent",
+        "EARLY_LEAVE": "Early leave"
+      }
+    },
+    "leaves": {
+      "col": {
+        "employee": "Applicant",
+        "period": "Period",
+        "reason": "Reason",
+        "requestedAt": "Requested at",
+        "status": "Status"
+      },
+      "status": {
+        "PENDING": "Pending",
+        "APPROVED": "Approved",
+        "REJECTED": "Rejected"
+      }
+    },
+    "payroll": {
+      "col": {
+        "period": "Period",
+        "employee": "Employee",
+        "baseSalary": "Base salary",
+        "allowance": "Allowance",
+        "insurance": "Deduction",
+        "netSalary": "Net salary",
+        "paid": "Status"
+      },
+      "paid": "Paid",
+      "unpaid": "Unpaid"
+    }
+  },
+  "Crm": {
+    "tabs": {
+      "customers": "Customers",
+      "consultations": "Consultations",
+      "claims": "Claims",
+      "points": "Points",
+      "coupons": "Coupons"
+    },
+    "customers": {
+      "col": {
+        "code": "Code",
+        "name": "Name",
+        "grade": "Grade",
+        "points": "Active points"
+      }
+    },
+    "consultations": {
+      "col": {
+        "occurredAt": "When",
+        "customer": "Customer",
+        "channel": "Channel",
+        "summary": "Summary",
+        "agent": "Agent",
+        "status": "Status"
+      },
+      "channel": {
+        "PHONE": "Phone",
+        "EMAIL": "Email",
+        "CHAT": "Chat",
+        "VISIT": "Visit"
+      },
+      "status": {
+        "OPEN": "Open",
+        "RESOLVED": "Resolved"
+      }
+    },
+    "claims": {
+      "col": {
+        "filedAt": "Filed at",
+        "customer": "Customer",
+        "type": "Type",
+        "description": "Description",
+        "resolvedAt": "Resolved at",
+        "status": "Status"
+      },
+      "type": {
+        "SHIPPING": "Shipping",
+        "PRODUCT": "Product",
+        "REFUND": "Refund",
+        "OTHER": "Other"
+      },
+      "status": {
+        "OPEN": "Open",
+        "IN_PROGRESS": "In progress",
+        "RESOLVED": "Resolved",
+        "CLOSED": "Closed"
+      }
+    },
+    "points": {
+      "col": {
+        "earnedAt": "Earned at",
+        "customer": "Customer",
+        "amount": "Amount",
+        "source": "Source",
+        "expireOn": "Expires on",
+        "status": "Status"
+      },
+      "status": {
+        "ACTIVE": "Active",
+        "USED": "Used",
+        "EXPIRED": "Expired"
+      }
+    },
+    "coupons": {
+      "col": {
+        "code": "Coupon code",
+        "target": "Target",
+        "discount": "Discount",
+        "expireOn": "Expires on",
+        "status": "Status"
+      },
+      "publicTarget": "Public (everyone)",
+      "status": {
+        "ISSUED": "Issued",
+        "USED": "Used",
+        "EXPIRED": "Expired"
+      }
+    }
+  },
+  "Settlement": {
+    "tabs": {
+      "periods": "Periods",
+      "ledgers": "Ledgers",
+      "sellers": "Seller Settlements",
+      "aging": "Aging",
+      "batch": "Batch Logs"
+    },
+    "periods": {
+      "col": {
+        "id": "Period",
+        "range": "Range",
+        "closedAt": "Closed at",
+        "settledAt": "Settled at",
+        "status": "Status"
+      },
+      "status": {
+        "OPEN": "Open",
+        "CLOSED": "Closed",
+        "SETTLED": "Settled"
+      }
+    },
+    "ledgers": {
+      "col": {
+        "occurredAt": "When",
+        "period": "Period",
+        "type": "Type",
+        "description": "Description",
+        "debit": "Debit",
+        "credit": "Credit",
+        "reversed": "Reversal"
+      },
+      "type": {
+        "SALES": "Sales",
+        "REFUND": "Refund",
+        "PURCHASE": "Purchase",
+        "FEE": "Fee",
+        "ADJUSTMENT": "Adjustment",
+        "REVERSAL": "Reversal"
+      }
+    },
+    "sellers": {
+      "col": {
+        "id": "Settlement #",
+        "seller": "Seller",
+        "period": "Period",
+        "gross": "Gross",
+        "refund": "Refund",
+        "fee": "Fee",
+        "net": "Net payout",
+        "paidAt": "Paid at",
+        "status": "Status"
+      },
+      "status": {
+        "CALCULATED": "Calculated",
+        "PAID": "Paid"
+      }
+    },
+    "aging": {
+      "kpi": {
+        "b0": "0-30 days",
+        "b1": "31-60 days",
+        "b2": "61-90 days",
+        "b3": "90+ days"
+      },
+      "col": {
+        "customer": "Customer",
+        "total": "Total receivable",
+        "b0": "0-30",
+        "b1": "31-60",
+        "b2": "61-90",
+        "b3": "90+",
+        "asOf": "As of"
+      }
+    },
+    "batch": {
+      "col": {
+        "id": "Job #",
+        "jobName": "Job",
+        "parameters": "Parameters",
+        "startedAt": "Started",
+        "duration": "Duration",
+        "read": "Read",
+        "write": "Write",
+        "skip": "Skip",
+        "status": "Status"
+      },
+      "status": {
+        "COMPLETED": "Completed",
+        "FAILED": "Failed",
+        "RUNNING": "Running"
+      }
+    }
+  },
+  "Pages": {
+    "dashboard": {
+      "title": "Logistics Overview",
+      "subtitle": "Real-time view across orders, shipments and deliveries"
+    },
+    "quotes":        { "title": "Quotes",          "subtitle": "Quotes per customer and order conversion" },
+    "orders":        { "title": "Sales Orders",    "subtitle": "Order intake and lifecycle" },
+    "payments":      { "title": "Payments",        "subtitle": "Payment status and refunds" },
+    "crm":           { "title": "Customers",       "subtitle": "Customer master and claims" },
+    "shipments":     { "title": "Shipments",       "subtitle": "Warehouse pick, pack and dispatch" },
+    "deliveries":    { "title": "Deliveries",      "subtitle": "Live in-transit tracking" },
+    "stocks":        { "title": "Stocks",          "subtitle": "Stock by warehouse and SKU" },
+    "purchase":      { "title": "Purchase Orders", "subtitle": "Supplier POs and goods receipt" },
+    "suppliers":     { "title": "Suppliers",       "subtitle": "Supplier master and transactions" },
+    "production":    { "title": "Production",      "subtitle": "Work orders and process status" },
+    "settlement":    { "title": "Settlement",      "subtitle": "Period revenue and cost settlement" },
+    "approvals":     { "title": "Approvals",       "subtitle": "Approval flow and history" },
+    "notifications": { "title": "Notifications",   "subtitle": "Event alerts and delivery channels" },
+    "reports":       { "title": "Reports",         "subtitle": "Key metrics and scheduled reports" },
+    "hr":            { "title": "HR",              "subtitle": "Organization and permissions" },
+    "admin":         { "title": "Admin",           "subtitle": "Users / roles / permissions / audit log" }
+  },
+  "Login": {
+    "title": "Sign in",
+    "subtitle": "Enter your username and password",
+    "usernameLabel": "Username",
+    "usernamePlaceholder": "e.g. admin",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter password",
+    "signIn": "Sign in",
+    "signingIn": "Signing in…",
+    "errorEmptyUsername": "Username is required",
+    "toastLoggedIn": "Welcome, {user}",
+    "skipToDashboard": "Skip to demo dashboard",
+    "mockHint": "Mock environment — any non-empty username will sign in."
+  },
+  "Admin": {
+    "tabs": {
+      "users": "Users",
+      "roles": "Roles",
+      "permissions": "Permissions",
+      "audit": "Audit"
+    },
+    "users": {
+      "col": {
+        "id": "ID",
+        "username": "Username",
+        "employee": "Linked employee",
+        "roles": "Roles",
+        "lastLoginAt": "Last login",
+        "status": "Status"
+      },
+      "status": {
+        "ACTIVE": "Active",
+        "LOCKED": "Locked",
+        "TERMINATED": "Terminated"
+      }
+    },
+    "roles": {
+      "col": {
+        "code": "Code",
+        "name": "Name",
+        "description": "Description",
+        "permissions": "Permissions"
+      }
+    },
+    "permissions": {
+      "col": {
+        "code": "Code",
+        "name": "Name",
+        "description": "Description",
+        "assignedRoles": "Assigned roles"
+      },
+      "noRoles": "No roles"
+    },
+    "audit": {
+      "col": {
+        "occurredAt": "When",
+        "user": "User",
+        "action": "Action",
+        "resource": "Resource",
+        "ip": "IP"
+      }
+    }
+  },
+  "Quotes": {
+    "subtitleCount": "{count} quotes · {active} active",
+    "col": {
+      "id": "Quote",
+      "customer": "Customer",
+      "items": "Items",
+      "total": "Total",
+      "validUntil": "Valid until",
+      "status": "Status"
+    },
+    "status": {
+      "ACTIVE": "Active",
+      "ACCEPTED": "Accepted",
+      "EXPIRED": "Expired",
+      "REJECTED": "Rejected"
+    }
+  },
+  "Payments": {
+    "subtitleCount": "{count} payments · {refunds} refunds · {pending} pending",
+    "refunds": "Refund history",
+    "col": {
+      "id": "Payment",
+      "order": "Order",
+      "method": "Method",
+      "amount": "Amount",
+      "processedAt": "Processed at",
+      "pgRef": "PG ref",
+      "status": "Status"
+    },
+    "method": {
+      "CARD": "Card",
+      "BANK": "Bank",
+      "VIRTUAL_ACCOUNT": "Virtual account"
+    },
+    "status": {
+      "PENDING": "Pending",
+      "COMPLETED": "Completed",
+      "FAILED": "Failed",
+      "REFUNDED": "Refunded"
+    },
+    "refundCol": {
+      "id": "Refund",
+      "payment": "Payment",
+      "amount": "Refund amount",
+      "reason": "Reason",
+      "processedAt": "Processed at"
+    }
+  },
+  "Approvals": {
+    "subtitleCount": "{count} documents · {inProgress} in progress",
+    "col": {
+      "id": "Document",
+      "title": "Title",
+      "type": "Type",
+      "drafter": "Drafter",
+      "amount": "Amount",
+      "progress": "Step",
+      "draftedAt": "Drafted at",
+      "status": "Status"
+    },
+    "type": {
+      "EXPENSE": "Expense",
+      "PROCUREMENT": "Procurement",
+      "LEAVE": "Leave",
+      "OTHER": "Other"
+    },
+    "status": {
+      "IN_PROGRESS": "In progress",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected",
+      "CANCELLED": "Cancelled"
+    }
+  },
+  "Notifications": {
+    "subtitleCount": "{count} notifications · {failed} failed",
+    "col": {
+      "sentAt": "Sent at",
+      "recipient": "Recipient",
+      "channel": "Channel",
+      "title": "Title",
+      "body": "Body",
+      "status": "Status"
+    },
+    "channel": {
+      "EMAIL": "Email",
+      "SMS": "SMS",
+      "PUSH": "Push",
+      "SYSTEM": "System"
+    },
+    "status": {
+      "PENDING": "Pending",
+      "SENT": "Sent",
+      "FAILED": "Failed"
+    }
+  },
+  "Reports": {
+    "subtitleCount": "{count} snapshots",
+    "generatedAt": "Generated at",
+    "type": {
+      "DAILY_SALES": "Daily Sales",
+      "WEEKLY_SUMMARY": "Weekly Summary",
+      "MONTHLY_PNL": "Monthly P&L",
+      "SELLER_PAYOUT": "Seller Payout",
+      "AGING": "Aging"
+    }
+  },
+  "Production": {
+    "subtitleCount": "{count} work orders · {inProgress} in progress",
+    "col": {
+      "id": "WO",
+      "product": "Product",
+      "planned": "Planned",
+      "produced": "Produced",
+      "defective": "Defective",
+      "progress": "Progress",
+      "issuedAt": "Issued at",
+      "status": "Status"
+    },
+    "status": {
+      "PLANNED": "Planned",
+      "IN_PROGRESS": "In progress",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    }
+  },
+  "Suppliers": {
+    "subtitleCount": "{count} suppliers · {active} active",
+    "col": {
+      "code": "Code",
+      "name": "Name",
+      "category": "Category",
+      "contact": "Contact",
+      "email": "Email",
+      "rating": "Rating",
+      "status": "Status"
+    },
+    "status": {
+      "ACTIVE": "Active",
+      "INACTIVE": "Inactive"
+    }
+  },
+  "System": {
+    "notFound": {
+      "title": "Page not found",
+      "subtitle": "The address you requested doesn't exist or has moved.",
+      "goHome": "Go to dashboard"
+    },
+    "error": {
+      "title": "Unexpected error",
+      "subtitle": "Please retry shortly or return to the dashboard.",
+      "digest": "Error ID",
+      "retry": "Retry",
+      "goHome": "Go to dashboard"
+    }
+  },
+  "Dashboard": {
+    "kpi": {
+      "todaySales": "Today's Sales",
+      "ordersToday": "Orders Today",
+      "inTransit": "In Transit",
+      "lowStock": "Low Stock"
+    },
+    "unit": {
+      "orders": "orders",
+      "deliveries": "deliveries",
+      "sku": "SKU"
+    },
+    "section": {
+      "activeShipments": "Active shipments",
+      "recentOrders": "Recent orders",
+      "criticalStocks": "Critical stock alerts",
+      "openApprovals": "Approvals in progress",
+      "recentNotifications": "Recent notifications"
+    },
+    "viewAll": "View all →",
+    "noActiveShipments": "No active shipments",
+    "noCriticalStocks": "No critical stocks",
+    "noOpenApprovals": "No approvals in progress",
+    "available": "available",
+    "step": "{current}/{total}"
+  }
+}

@@ -7,6 +7,7 @@ import com.erp.production.domain.event.WorkOrderIssuedEvent;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.event.EventListener;
 import org.springframework.modulith.test.ApplicationModuleTest;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@ApplicationModuleTest
+@ApplicationModuleTest(extraIncludes = "common")
+@Import(WorkOrderServiceIntegrationTest.EventCollector.class)
 class WorkOrderServiceIntegrationTest {
 
     @Autowired WorkOrderUseCase useCase;

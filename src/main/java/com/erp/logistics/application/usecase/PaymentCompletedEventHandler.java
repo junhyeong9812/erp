@@ -5,7 +5,7 @@ import com.erp.payment.domain.event.PaymentCompletedEvent;
 import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("logisticsPaymentCompletedEventHandler")
 public class PaymentCompletedEventHandler {
 
     private final ShipmentUseCase shipmentUseCase;

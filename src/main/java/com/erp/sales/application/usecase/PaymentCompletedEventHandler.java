@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * 이 결합은 PHASE04_GAPS.md 에 후속 정리 항목으로 기록되어 있으며,
  * 향후 payment 모듈이 이벤트를 공개 패키지로 노출하거나 shared-kernel 로 옮기면 해소된다.
  */
-@Component
+@Component("salesPaymentCompletedEventHandler")
 public class PaymentCompletedEventHandler {
 
     private final SalesOrderUseCase salesOrderUseCase;

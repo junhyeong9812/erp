@@ -10,4 +10,6 @@ public interface EventBus {
     default void publishAll(List<? extends DomainEvent> events) {
         events.forEach(this::publish);
     }
+
+    void publishAll(Iterable<? extends DomainEvent> events);
 }

@@ -17,4 +17,9 @@ public class SpringEventBus implements EventBus {
     public void publish(DomainEvent event) {
         publisher.publishEvent(event);
     }
+
+    @Override
+    public void publishAll(Iterable<? extends DomainEvent> events) {
+        events.forEach(this::publish);
+    }
 }

@@ -205,20 +205,38 @@
 
 ## 진행 상황
 
-| 모듈 | 상태 | 비고 |
-|------|------|------|
-| inventory | 🔴 미착수 | |
-| payment | 🔴 미착수 | |
-| settlement | 🔴 미착수 | |
-| sales | 🔴 미착수 | |
-| procurement | 🔴 미착수 | |
-| logistics | 🔴 미착수 | |
-| production | 🔴 미착수 | |
-| hr | 🔴 미착수 | |
-| approval | 🔴 미착수 | |
-| auth | 🔴 미착수 | |
-| crm | 🔴 미착수 | |
-| promotion | 🔴 미착수 | |
-| notification | 🔴 미착수 | |
-| report | 🔴 미착수 | |
+> 검증일: 2026-06-07 · `gradle test` 기준 · **380 tests, 6 failed, 1 skipped**
+
+**상태 범례**
+- 🟢 구현 + 테스트 작성 + 전부 통과
+- 🟡 구현 + 테스트 작성, 일부 통합테스트 실패
+- 🔵 구현 완료, 테스트 미작성
+- 🔴 미착수
+
+| # | 모듈 | 상태 | 비고 |
+|---|------|------|------|
+| 00 | common (Foundation) | 🟢 | 이벤트버스·공통 도메인·예외 |
+| 01 | inventory | 🟢 | |
+| 02 | payment | 🟢 | |
+| 03 | settlement | 🟢 | `MonthlyClosingJobTest` 1건 의도적 skip(`@Disabled`) |
+| 04 | sales | 🟢 | |
+| 05 | procurement | 🟡 | `StockDepletedEventIntegrationTest` 1건 실패 (자동 발주 핸들러 미트리거) |
+| 06 | logistics | 🟡 | `PaymentCompletedEventHandlerIntegrationTest` 1건 실패 (컨텍스트 로드 실패) |
+| 07 | production | 🟢 | |
+| 08 | hr | 🟢 | |
+| 09 | approval | 🟢 | |
+| 10 | auth | 🟡 | `AuthServiceIntegrationTest` 2건 실패 (recorder 빈 미등록) |
+| 11 | crm | 🟡 | `CrmPaymentEventIntegrationTest` 2건 실패 (recorder 빈 미등록 + 핸들러) |
+| 12 | promotion | 🔵 | 코드 구현 완료(커밋됨), 테스트 미작성 |
+| 13 | notification | 🔵 | 코드 구현 완료(미커밋), 테스트 미작성 |
+| 14 | report | 🔵 | 코드 구현 완료(미커밋), 테스트 미작성 |
+
+### 검증 메모 (2026-06-07)
+
+빌드를 막던 컴파일 오류 2건을 수정한 뒤 전체 테스트를 실행했다.
+
+1. `SpringEventBus`가 인터페이스 `EventBus`의 추상 메서드 `publishAll(Iterable<? extends DomainEvent>)`를 미구현 → `compileJava` 실패. (커밋 `bd09ada`에서 인터페이스에 메서드만 추가되고 구현체 누락). 구현 추가로 해결.
+2. `PayrollTest`의 테스트 메서드명이 숫자 `4`로 시작(`4대보험_…`) → Java 식별자 규칙 위반으로 `compileTestJava` 실패. `사대보험_…`으로 변경.
+
+남은 통합테스트 실패 6건은 (a) 테스트 내부 nested `@Component` recorder 미등록(`@Import` 누락), (b) 일부 이벤트 구독 핸들러 미구현/미등록으로 분류된다. 별도 작업으로 처리 예정.
 
